@@ -12,9 +12,9 @@ if (PHP_DOTPHP != "no") {
   }
   
   ADD_SOURCES(configure_module_dirname + "/dotphp", "baseexception.zep.c abstractbootstrap.zep.c argumentexception.zep.c configurationexception.zep.c dataexception.zep.c dbexception.zep.c dot.zep.c httpexception.zep.c notimplementedexception.zep.c parseexception.zep.c permissionexception.zep.c runtimeexception.zep.c socketexception.zep.c swoolebootstrap.zep.c validateexception.zep.c webbootstrap.zep.c", "dotphp");
-	ADD_SOURCES(configure_module_dirname + "/dotphp/base", "dotbase.zep.c webcontrollerbase.zep.c", "dotphp");
+	ADD_SOURCES(configure_module_dirname + "/dotphp/base", "dotbase.zep.c swoolebase.zep.c webcontrollerbase.zep.c", "dotphp");
 	ADD_SOURCES(configure_module_dirname + "/dotphp/interfaces", "icontroller.zep.c idb.zep.c iencoder.zep.c ilogger.zep.c iswooleeventdispatcher.zep.c itemplate.zep.c", "dotphp");
-	ADD_SOURCES(configure_module_dirname + "/dotphp/bean", "dbparameter.zep.c routemessage.zep.c", "dotphp");
+	ADD_SOURCES(configure_module_dirname + "/dotphp/bean", "abstractresponsemessage.zep.c dbparameter.zep.c routemessage.zep.c", "dotphp");
 	ADD_SOURCES(configure_module_dirname + "/dotphp/core", "genericlogger.zep.c socketclient.zep.c swooleeventdispatcher.zep.c", "dotphp");
 	ADD_SOURCES(configure_module_dirname + "/dotphp/db", "dbpdo.zep.c", "dotphp");
 	ADD_SOURCES(configure_module_dirname + "/dotphp/utils", "arrayutil.zep.c encoder.zep.c number.zep.c path.zep.c probability.zep.c stringutil.zep.c", "dotphp");

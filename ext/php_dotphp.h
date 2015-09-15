@@ -11,7 +11,7 @@
 #include "kernel/globals.h"
 
 #define PHP_DOTPHP_NAME        "DotPHP"
-#define PHP_DOTPHP_VERSION     "0.0.1"
+#define PHP_DOTPHP_VERSION     "0.1a build 3"
 #define PHP_DOTPHP_EXTNAME     "dotphp"
 #define PHP_DOTPHP_AUTHOR      "Lei Lee"
 #define PHP_DOTPHP_ZEPVERSION  "0.7.1b"

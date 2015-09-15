@@ -394,6 +394,6 @@ abstract class AbstractBootstrap
      *
      * @return void 
      */
-    private function setup() {}
+    final protected function setup() {}
 
 }

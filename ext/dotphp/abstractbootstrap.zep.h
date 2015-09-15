@@ -141,6 +141,6 @@ ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, debug, arginfo_dotphp_abstractbootstrap_debug, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, dump, arginfo_dotphp_abstractbootstrap_dump, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, cts, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(DotPHP_AbstractBootstrap, setup, NULL, ZEND_ACC_PRIVATE)
+	PHP_ME(DotPHP_AbstractBootstrap, setup, NULL, ZEND_ACC_FINAL|ZEND_ACC_PROTECTED)
 	PHP_FE_END
 };

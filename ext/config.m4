@@ -18,7 +18,9 @@ if test "$PHP_DOTPHP" = "yes"; then
 	dotphp/interfaces/ilogger.zep.c
 	dotphp/interfaces/iswooleeventdispatcher.zep.c
 	dotphp/argumentexception.zep.c
+	dotphp/base/swoolebase.zep.c
 	dotphp/base/webcontrollerbase.zep.c
+	dotphp/bean/abstractresponsemessage.zep.c
 	dotphp/bean/dbparameter.zep.c
 	dotphp/bean/routemessage.zep.c
 	dotphp/configurationexception.zep.c

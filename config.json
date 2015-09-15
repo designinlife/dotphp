@@ -55,7 +55,7 @@
     "name": "DotPHP",
     "description": "DotPHP - A simple PHP development framework.",
     "author": "Lei Lee",
-    "version": "0.0.1",
+    "version": "0.1a build 3",
     "verbose": true,
     "requires": {
         "extensions": ["amf3", "json", "msgpack", "igbinary"]

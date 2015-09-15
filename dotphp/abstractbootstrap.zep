@@ -491,7 +491,7 @@ abstract class AbstractBootstrap {
      * 
      * @return void
      */
-    private function setup() -> void {
+    final protected function setup() -> void {
         date_default_timezone_set(this->timezone);
 
         register_shutdown_function([this, "shutdown"]);
