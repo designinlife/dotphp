@@ -1,0 +1,1840 @@
+<html>
+
+
+    <head>
+
+        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+            
+        <script>var ZepCurrentPath = '../../'</script>
+
+        
+    </head>
+
+
+    <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    DotPHP Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+
+            </div>
+        </div>
+
+        <div id="body">
+
+            <div id="body-left">
+
+                <div class="header-search">
+
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+
+                    <div id="menu-wrapper">
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >DotPHP\AbstractBootstrap</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/DotPHP/AbstractBootstrap.html">Source</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/DotPHP.html">DotPHP</a>
+        </span>
+                <h1 class="class-name">AbstractBootstrap</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-dispatch">dispatch</a></span>(<span class="param-data-type">array</span>  <span class="param-name">$argv</span>)
+                <div class="summary-text">启动程序。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-initialize">initialize</a></span>()
+                <div class="summary-text">初始化事件。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-initializeComplete">initializeComplete</a></span>()
+                <div class="summary-text">初始化完成事件。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\Bean\RouteMessage|null
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-route">route</a></span>()
+                <div class="summary-text">执行路由解析。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-validate">validate</a></span>()
+                <div class="summary-text">执行验证。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-execute">execute</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$route_message</span>)
+                <div class="summary-text">执行程序。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-before">before</a></span>()
+                <div class="summary-text">在 execute() 调用之前执行。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-after">after</a></span>()
+                <div class="summary-text">在 execute() 调用之后执行。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-shutdown">shutdown</a></span>()
+                <div class="summary-text">释放资源。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-defExceptionHandler">defExceptionHandler</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$ex</span>)
+                <div class="summary-text">缺省异常处理。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-defErrorHandler">defErrorHandler</a></span>(<span class="param-data-type">int</span>  <span class="param-name">$errno</span>,<span class="param-data-type">string</span>  <span class="param-name">$errstr</span>,<span class="param-data-type">string</span>  <span class="param-name">$errfile</span>,<span class="param-data-type">int</span>  <span class="param-name">$errline</span>)
+                <div class="summary-text">缺省错误处理。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-isCliMode">isCliMode</a></span>()
+                <div class="summary-text">指示是否命令行运行模式？</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getTimezone">getTimezone</a></span>()
+                <div class="summary-text">获取当前设定的系统时区。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setTimezone">setTimezone</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$timezone</span>)
+                <div class="summary-text">设置系统使用的时区。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getTimeOffset">getTimeOffset</a></span>()
+                <div class="summary-text">获取系统时间偏移值。(秒)</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setTimeOffset">setTimeOffset</a></span>(<span class="param-data-type">int</span>  <span class="param-name">$offset</span>)
+                <div class="summary-text">设置系统时间偏移值。(秒)</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getErrorLevel">getErrorLevel</a></span>()
+                <div class="summary-text">获取错误追踪级别。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setErrorLevel">setErrorLevel</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$error_level</span>)
+                <div class="summary-text">设置错误追踪级别。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getControllerNS">getControllerNS</a></span>()
+                <div class="summary-text">获取控制器命名空间。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setControllerNS">setControllerNS</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$controller_ns</span>)
+                <div class="summary-text">设置控制器命名空间。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setDbParameter">setDbParameter</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$db_parameter</span>)
+                <div class="summary-text">设置数据库连接参数对象。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getLogDirectory">getLogDirectory</a></span>()
+                <div class="summary-text">获取日志目录。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setLogDirectory">setLogDirectory</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$log_dir</span>)
+                <div class="summary-text">设置日志目录。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getLogLevel">getLogLevel</a></span>()
+                <div class="summary-text">获取日志输出级别。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setLogLevel">setLogLevel</a></span>(<span class="param-data-type">int</span>  <span class="param-name">$level</span>)
+                <div class="summary-text">设置日志输出级别。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getLogMode">getLogMode</a></span>()
+                <div class="summary-text">获取日志输出模式。(1,控制台 | 2,文件)</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setLogMode">setLogMode</a></span>(<span class="param-data-type">int</span>  <span class="param-name">$mode</span>)
+                <div class="summary-text">设置日志输出模式。(1,控制台 | 2,文件)</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getLogModule">getLogModule</a></span>()
+                <div class="summary-text">获取日志模块名称。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setLogModule">setLogModule</a></span>(<span class="param-data-type">string</span>  <span class="param-name">$module</span>)
+                <div class="summary-text">设置日志模块名称。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        string
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-getVersion">getVersion</a></span>()
+                <div class="summary-text">获取系统版本号。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        bool
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-isDebug">isDebug</a></span>()
+                <div class="summary-text">指示是否启用调试？</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        DotPHP\AbstractBootstrap
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-debug">debug</a></span>(<span class="param-data-type">bool</span>  <span class="param-name">$debug</span>)
+                <div class="summary-text">设置调试模式开关。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-dump">dump</a></span>(<span class="param-data-type">variable</span>  <span class="param-name">$data</span>)
+                <div class="summary-text">打印数据。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        int
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-cts">cts</a></span>()
+                <div class="summary-text">获取当前系统时间。</div>
+            </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="method-return">
+
+        
+                
+    </div>
+    <div class="method-summary">
+        <span class="method-name"><a href="#method-details-setup">setup</a></span>()
+                <div class="summary-text">系统环境设置。</div>
+            </div>
+
+</li>
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-dispatch"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">dispatch</h3>(<span class="param-data-type">array</span>  <span class="param-name">$argv</span>)
+                
+                                
+                    <div>
+                    启动程序。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-initialize"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-abstract">abstract</span>
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">initialize</h3>()
+                
+                                
+                    <div>
+                    初始化事件。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-initializeComplete"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-abstract">abstract</span>
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">initializeComplete</h3>()
+                
+                                
+                    <div>
+                    初始化完成事件。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-route"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-abstract">abstract</span>
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">route</h3>()
+                
+                                
+                    <div>
+                    执行路由解析。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-validate"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-abstract">abstract</span>
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">validate</h3>()
+                
+                                
+                    <div>
+                    执行验证。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-execute"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-abstract">abstract</span>
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">execute</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$route_message</span>)
+                
+                                
+                    <div>
+                    执行程序。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-before"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">before</h3>()
+                
+                                
+                    <div>
+                    在 execute() 调用之前执行。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-after"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-protected">protected</span>
+                
+                                
+                function <h3 class="method-name">after</h3>()
+                
+                                
+                    <div>
+                    在 execute() 调用之后执行。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-shutdown"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">shutdown</h3>()
+                
+                                
+                    <div>
+                    释放资源。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-defExceptionHandler"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">defExceptionHandler</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$ex</span>)
+                
+                                
+                    <div>
+                    缺省异常处理。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-defErrorHandler"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-final">final</span>
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">defErrorHandler</h3>(<span class="param-data-type">int</span>  <span class="param-name">$errno</span>,<span class="param-data-type">string</span>  <span class="param-name">$errstr</span>,<span class="param-data-type">string</span>  <span class="param-name">$errfile</span>,<span class="param-data-type">int</span>  <span class="param-name">$errline</span>)
+                
+                                
+                    <div>
+                    缺省错误处理。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-isCliMode"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">isCliMode</h3>()
+                
+                                
+                    <div>
+                    指示是否命令行运行模式？                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getTimezone"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getTimezone</h3>()
+                
+                                
+                    <div>
+                    获取当前设定的系统时区。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setTimezone"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setTimezone</h3>(<span class="param-data-type">string</span>  <span class="param-name">$timezone</span>)
+                
+                                
+                    <div>
+                    设置系统使用的时区。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getTimeOffset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getTimeOffset</h3>()
+                
+                                
+                    <div>
+                    获取系统时间偏移值。(秒)                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setTimeOffset"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setTimeOffset</h3>(<span class="param-data-type">int</span>  <span class="param-name">$offset</span>)
+                
+                                
+                    <div>
+                    设置系统时间偏移值。(秒)                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getErrorLevel"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getErrorLevel</h3>()
+                
+                                
+                    <div>
+                    获取错误追踪级别。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setErrorLevel"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setErrorLevel</h3>(<span class="param-data-type">string</span>  <span class="param-name">$error_level</span>)
+                
+                                
+                    <div>
+                    设置错误追踪级别。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getControllerNS"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getControllerNS</h3>()
+                
+                                
+                    <div>
+                    获取控制器命名空间。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setControllerNS"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setControllerNS</h3>(<span class="param-data-type">string</span>  <span class="param-name">$controller_ns</span>)
+                
+                                
+                    <div>
+                    设置控制器命名空间。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setDbParameter"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setDbParameter</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$db_parameter</span>)
+                
+                                
+                    <div>
+                    设置数据库连接参数对象。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getLogDirectory"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getLogDirectory</h3>()
+                
+                                
+                    <div>
+                    获取日志目录。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setLogDirectory"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setLogDirectory</h3>(<span class="param-data-type">string</span>  <span class="param-name">$log_dir</span>)
+                
+                                
+                    <div>
+                    设置日志目录。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getLogLevel"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getLogLevel</h3>()
+                
+                                
+                    <div>
+                    获取日志输出级别。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setLogLevel"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setLogLevel</h3>(<span class="param-data-type">int</span>  <span class="param-name">$level</span>)
+                
+                                
+                    <div>
+                    设置日志输出级别。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getLogMode"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getLogMode</h3>()
+                
+                                
+                    <div>
+                    获取日志输出模式。(1,控制台 | 2,文件)                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setLogMode"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setLogMode</h3>(<span class="param-data-type">int</span>  <span class="param-name">$mode</span>)
+                
+                                
+                    <div>
+                    设置日志输出模式。(1,控制台 | 2,文件)                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getLogModule"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getLogModule</h3>()
+                
+                                
+                    <div>
+                    获取日志模块名称。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setLogModule"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">setLogModule</h3>(<span class="param-data-type">string</span>  <span class="param-name">$module</span>)
+                
+                                
+                    <div>
+                    设置日志模块名称。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-getVersion"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">getVersion</h3>()
+                
+                                
+                    <div>
+                    获取系统版本号。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-isDebug"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">isDebug</h3>()
+                
+                                
+                    <div>
+                    指示是否启用调试？                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-debug"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">debug</h3>(<span class="param-data-type">bool</span>  <span class="param-name">$debug</span>)
+                
+                                
+                    <div>
+                    设置调试模式开关。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-dump"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">dump</h3>(<span class="param-data-type">variable</span>  <span class="param-name">$data</span>)
+                
+                                
+                    <div>
+                    打印数据。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-cts"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-public">public</span>
+                
+                                
+                function <h3 class="method-name">cts</h3>()
+                
+                                
+                    <div>
+                    获取当前系统时间。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    
+        
+<li class="class-method clearfix">
+
+    <div class="hidden-anchor"  id="method-details-setup"></div>
+    
+    <div class="method-details">
+        
+
+        
+
+        <div class="method-details-details">
+            <div class="method-signature">
+
+                
+                                    
+                <span class="visibility-private">private</span>
+                
+                                
+                function <h3 class="method-name">setup</h3>()
+                
+                                
+                    <div>
+                    系统环境设置。                    </div>
+                    <div>
+                                        </div>
+                
+                                
+            </div>
+        </div>
+
+    </div>
+
+</li>
+    </ul>                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+
+
+</html>
