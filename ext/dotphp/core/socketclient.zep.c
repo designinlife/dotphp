@@ -170,6 +170,8 @@ PHP_METHOD(DotPHP_Core_SocketClient, send) {
 
 
 
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "connect", NULL, 0);
+	zephir_check_call_status();
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 	ZEPHIR_RETURN_CALL_METHOD(_0, "send", NULL, 0, msg);
 	zephir_check_call_status();

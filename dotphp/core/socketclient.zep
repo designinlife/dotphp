@@ -69,6 +69,8 @@ class SocketClient {
      * @return void
      */
     public function send(msg) -> int {
+        this->connect();
+
         return this->instance->send(msg);
     }
 
