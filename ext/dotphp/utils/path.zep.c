@@ -47,9 +47,9 @@ PHP_METHOD(DotPHP_Utils_Path, combin) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 27);
+	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 26);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 28);
+	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 27);
 	zephir_check_call_status();
 	if (ZEPHIR_LE_LONG(size, 0)) {
 		RETURN_MM_STRING("", 1);
@@ -62,7 +62,7 @@ PHP_METHOD(DotPHP_Utils_Path, combin) {
 	ZVAL_STRING(_1, "/[\\/]+/i", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_INIT_VAR(_2);
 	ZVAL_STRING(_2, "/", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_CALL_FUNCTION(&s, "preg_replace", NULL, 29, _1, _2, path);
+	ZEPHIR_CALL_FUNCTION(&s, "preg_replace", NULL, 28, _1, _2, path);
 	zephir_check_temp_parameter(_1);
 	zephir_check_temp_parameter(_2);
 	zephir_check_call_status();

@@ -117,15 +117,15 @@ PHP_METHOD(DotPHP_Dot, setup) {
 	zephir_update_static_property_ce(dotphp_dot_ce, SL("sys_root"), &_2 TSRMLS_CC);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_LONG(&_3, error_level);
-	ZEPHIR_CALL_FUNCTION(NULL, "error_reporting", NULL, 17, &_3);
+	ZEPHIR_CALL_FUNCTION(NULL, "error_reporting", NULL, 18, &_3);
 	zephir_check_call_status();
 	if (zephir_is_callable(class_auto_handler TSRMLS_CC) == 1) {
-		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 18, class_auto_handler);
+		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 19, class_auto_handler);
 		zephir_check_call_status();
 	} else {
 		ZEPHIR_SINIT_NVAR(_3);
 		ZVAL_STRING(&_3, "\\DotPHP\\Dot::def_class_auto_handler", 0);
-		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 18, &_3);
+		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 19, &_3);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();

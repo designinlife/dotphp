@@ -122,7 +122,7 @@ PHP_METHOD(DotPHP_Core_SocketClient, connect) {
 			zephir_read_property(&_10, _9, SL("errCode"), PH_NOISY_CC);
 			ZEPHIR_INIT_VAR(_11);
 			ZEPHIR_CONCAT_SVSVSVS(_11, "连接主机 ", _7, ":", _8, " 失败。(#", _10, ")");
-			ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL, 15, _11);
+			ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL, 16, _11);
 			zephir_check_call_status();
 			zephir_throw_exception_debug(_2, "dotphp/core/socketclient.zep", 50 TSRMLS_CC);
 			ZEPHIR_MM_RESTORE();

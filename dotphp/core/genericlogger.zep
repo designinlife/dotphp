@@ -165,13 +165,13 @@ class GenericLogger extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\I
 
         let date_str     = date("Ymd");
         let file_pattern = "%d.%m.log";
-        let msg_pattern  = "%d [%l] %m%n";
+        let msg_pattern  = "%d %l [#%p] %m%n";
 
         let t     = microtime(true);
         let micro = sprintf("%03d", (t - floor(t)) * 1000);
 
         let reps1 = ["%d": date_str, "%m": strtolower(this->_module)];
-        let reps2 = ["%d": date("Y-m-d H:i:s," . micro, t), "%l": this->_types[level], "%m": msg, "%n": PHP_EOL];
+        let reps2 = ["%d": date("Y-m-d H:i:s," . micro, t), "%l": sprintf("%-5s", this->_types[level]), "%p": posix_getpid(), "%m": msg, "%n": PHP_EOL];
 
         let file = this->bootstrap->getLogDirectory() . "/" . file_pattern;
         let msg  = msg_pattern;

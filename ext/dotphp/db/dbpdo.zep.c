@@ -257,7 +257,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, exec) {
 				zephir_check_call_status();
 				ZEPHIR_CALL_METHOD(&_8, e, "getcode", NULL, 0);
 				zephir_check_call_status();
-				ZEPHIR_CALL_METHOD(NULL, _7, "__construct", NULL, 16, _6, _8, v);
+				ZEPHIR_CALL_METHOD(NULL, _7, "__construct", NULL, 17, _6, _8, v);
 				zephir_check_call_status();
 				zephir_throw_exception_debug(_7, "dotphp/db/dbpdo.zep", 132 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();
@@ -285,7 +285,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, exec) {
 				zephir_check_call_status();
 				ZEPHIR_CALL_METHOD(&_9, e, "getcode", NULL, 0);
 				zephir_check_call_status();
-				ZEPHIR_CALL_METHOD(NULL, _7, "__construct", NULL, 16, _8, _9, sql);
+				ZEPHIR_CALL_METHOD(NULL, _7, "__construct", NULL, 17, _8, _9, sql);
 				zephir_check_call_status();
 				zephir_throw_exception_debug(_7, "dotphp/db/dbpdo.zep", 138 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();
@@ -712,7 +712,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 				zephir_check_call_status();
 				ZEPHIR_INIT_LNVAR(_17);
 				ZEPHIR_CONCAT_SVS(_17, "数据库连接失败。(", _12, ")");
-				ZEPHIR_CALL_METHOD(NULL, _18, "__construct", NULL, 16, _17);
+				ZEPHIR_CALL_METHOD(NULL, _18, "__construct", NULL, 17, _17);
 				zephir_check_call_status();
 				zephir_throw_exception_debug(_18, "dotphp/db/dbpdo.zep", 332 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();

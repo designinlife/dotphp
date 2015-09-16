@@ -144,9 +144,9 @@ PHP_METHOD(DotPHP_Utils_StringUtil, substitute) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 27);
+	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 26);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 28);
+	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 27);
 	zephir_check_call_status();
 	ZEPHIR_OBS_VAR(str);
 	zephir_array_fetch_long(&str, args, 0, PH_NOISY, "dotphp/utils/stringutil.zep", 60 TSRMLS_CC);
@@ -203,7 +203,7 @@ PHP_METHOD(DotPHP_Utils_StringUtil, length) {
 	}
 
 
-	ZEPHIR_CALL_FUNCTION(&_0, "mb_strlen", NULL, 31, str, encoding);
+	ZEPHIR_CALL_FUNCTION(&_0, "mb_strlen", NULL, 30, str, encoding);
 	zephir_check_call_status();
 	v = (long) (zephir_safe_div_long_long((zephir_fast_strlen_ev(str) + zephir_get_numberval(_0)), 2 TSRMLS_CC));
 	RETURN_MM_LONG(v);
@@ -287,13 +287,13 @@ PHP_METHOD(DotPHP_Utils_StringUtil, alphaID) {
 		}
 		ZEPHIR_SINIT_NVAR(_3);
 		ZVAL_STRING(&_3, "sha256", 0);
-		ZEPHIR_CALL_FUNCTION(&pass_hash, "hash", &_6, 32, &_3, pass_key);
+		ZEPHIR_CALL_FUNCTION(&pass_hash, "hash", &_6, 31, &_3, pass_key);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(_7);
 		if (zephir_fast_strlen_ev(pass_hash) < zephir_fast_strlen_ev(index)) {
 			ZEPHIR_SINIT_NVAR(_3);
 			ZVAL_STRING(&_3, "sha512", 0);
-			ZEPHIR_CALL_FUNCTION(&_7, "hash", &_6, 32, &_3, pass_key);
+			ZEPHIR_CALL_FUNCTION(&_7, "hash", &_6, 31, &_3, pass_key);
 			zephir_check_call_status();
 		} else {
 			ZEPHIR_CPY_WRT(_7, pass_hash);
@@ -326,7 +326,7 @@ PHP_METHOD(DotPHP_Utils_StringUtil, alphaID) {
 		ZEPHIR_INIT_NVAR(_5);
 		ZVAL_LONG(_5, 3);
 		Z_SET_ISREF_P(p);
-		ZEPHIR_CALL_FUNCTION(NULL, "array_multisort", NULL, 33, p, _5, i);
+		ZEPHIR_CALL_FUNCTION(NULL, "array_multisort", NULL, 32, p, _5, i);
 		Z_UNSET_ISREF_P(p);
 		zephir_check_call_status();
 		ZEPHIR_INIT_NVAR(index);
@@ -350,7 +350,7 @@ PHP_METHOD(DotPHP_Utils_StringUtil, alphaID) {
 				t = _11;
 				ZEPHIR_SINIT_NVAR(_3);
 				ZVAL_LONG(&_3, (len - t));
-				ZEPHIR_CALL_FUNCTION(&bcp, "bcpow", &_13, 34, base, &_3);
+				ZEPHIR_CALL_FUNCTION(&bcp, "bcpow", &_13, 33, base, &_3);
 				zephir_check_call_status();
 				ZEPHIR_SINIT_NVAR(_3);
 				ZVAL_LONG(&_3, t);
@@ -388,7 +388,7 @@ PHP_METHOD(DotPHP_Utils_StringUtil, alphaID) {
 		}
 		ZEPHIR_INIT_LNVAR(_7);
 		if (!ZEPHIR_IS_LONG(input, 0)) {
-			ZEPHIR_CALL_FUNCTION(&_16, "log", NULL, 35, input, base);
+			ZEPHIR_CALL_FUNCTION(&_16, "log", NULL, 34, input, base);
 			zephir_check_call_status();
 			ZEPHIR_INIT_NVAR(_7);
 			ZVAL_DOUBLE(_7, zephir_floor(_16 TSRMLS_CC));
@@ -413,7 +413,7 @@ PHP_METHOD(DotPHP_Utils_StringUtil, alphaID) {
 				t = _17;
 				ZEPHIR_SINIT_NVAR(_3);
 				ZVAL_LONG(&_3, t);
-				ZEPHIR_CALL_FUNCTION(&bcp, "bcpow", &_13, 34, base, &_3);
+				ZEPHIR_CALL_FUNCTION(&bcp, "bcpow", &_13, 33, base, &_3);
 				zephir_check_call_status();
 				ZEPHIR_SINIT_NVAR(_3);
 				div_function(&_3, input, bcp TSRMLS_CC);
@@ -451,9 +451,9 @@ PHP_METHOD(DotPHP_Utils_StringUtil, guid) {
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(_0);
-	ZEPHIR_CALL_FUNCTION(&_1, "mt_rand", NULL, 36);
+	ZEPHIR_CALL_FUNCTION(&_1, "mt_rand", NULL, 35);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_2, "uniqid", NULL, 37, _1, ZEPHIR_GLOBAL(global_true));
+	ZEPHIR_CALL_FUNCTION(&_2, "uniqid", NULL, 36, _1, ZEPHIR_GLOBAL(global_true));
 	zephir_check_call_status();
 	zephir_md5(_0, _2);
 	ZEPHIR_INIT_VAR(charid);
@@ -509,12 +509,12 @@ PHP_METHOD(DotPHP_Utils_StringUtil, ns) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 28);
+	ZEPHIR_CALL_FUNCTION(&size, "func_num_args", NULL, 27);
 	zephir_check_call_status();
 	if (ZEPHIR_LE_LONG(size, 0)) {
 		RETURN_MM_STRING("", 1);
 	}
-	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 27);
+	ZEPHIR_CALL_FUNCTION(&args, "func_get_args", NULL, 26);
 	zephir_check_call_status();
 	zephir_fast_join_str(return_value, SL("\\"), args TSRMLS_CC);
 	RETURN_MM();
@@ -588,27 +588,27 @@ PHP_METHOD(DotPHP_Utils_StringUtil, encrypt) {
 	ZVAL_STRING(&_2, "ecb", 0);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_STRING(&_3, "", 0);
-	ZEPHIR_CALL_FUNCTION(&td, "mcrypt_module_open", NULL, 38, &_0, &_1, &_2, &_3);
+	ZEPHIR_CALL_FUNCTION(&td, "mcrypt_module_open", NULL, 37, &_0, &_1, &_2, &_3);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&td_size, "mcrypt_enc_get_iv_size", NULL, 39, td);
+	ZEPHIR_CALL_FUNCTION(&td_size, "mcrypt_enc_get_iv_size", NULL, 38, td);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_0);
 	ZVAL_LONG(&_0, 2);
-	ZEPHIR_CALL_FUNCTION(&iv, "mcrypt_create_iv", NULL, 40, td_size, &_0);
+	ZEPHIR_CALL_FUNCTION(&iv, "mcrypt_create_iv", NULL, 39, td_size, &_0);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_0);
 	ZVAL_LONG(&_0, 0);
 	ZEPHIR_INIT_VAR(key);
 	zephir_substr(key, secure_key, 0 , zephir_get_intval(td_size), 0);
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_init", NULL, 41, td, key, iv);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_init", NULL, 40, td, key, iv);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_4, "mcrypt_generic", NULL, 42, td, s);
+	ZEPHIR_CALL_FUNCTION(&_4, "mcrypt_generic", NULL, 41, td, s);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&ret, "base64_encode", NULL, 43, _4);
+	ZEPHIR_CALL_FUNCTION(&ret, "base64_encode", NULL, 42, _4);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_deinit", NULL, 44, td);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_deinit", NULL, 43, td);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_module_close", NULL, 45, td);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_module_close", NULL, 44, td);
 	zephir_check_call_status();
 	RETURN_CCTOR(ret);
 
@@ -647,29 +647,29 @@ PHP_METHOD(DotPHP_Utils_StringUtil, decrypt) {
 	ZVAL_STRING(&_2, "ecb", 0);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_STRING(&_3, "", 0);
-	ZEPHIR_CALL_FUNCTION(&td, "mcrypt_module_open", NULL, 38, &_0, &_1, &_2, &_3);
+	ZEPHIR_CALL_FUNCTION(&td, "mcrypt_module_open", NULL, 37, &_0, &_1, &_2, &_3);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&td_size, "mcrypt_enc_get_iv_size", NULL, 39, td);
+	ZEPHIR_CALL_FUNCTION(&td_size, "mcrypt_enc_get_iv_size", NULL, 38, td);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_0);
 	ZVAL_LONG(&_0, 2);
-	ZEPHIR_CALL_FUNCTION(&iv, "mcrypt_create_iv", NULL, 40, td_size, &_0);
+	ZEPHIR_CALL_FUNCTION(&iv, "mcrypt_create_iv", NULL, 39, td_size, &_0);
 	zephir_check_call_status();
 	ZEPHIR_SINIT_NVAR(_0);
 	ZVAL_LONG(&_0, 0);
 	ZEPHIR_INIT_VAR(key);
 	zephir_substr(key, secure_key, 0 , zephir_get_intval(td_size), 0);
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_init", NULL, 41, td, key, iv);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_init", NULL, 40, td, key, iv);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_4, "base64_decode", NULL, 46, s);
+	ZEPHIR_CALL_FUNCTION(&_4, "base64_decode", NULL, 45, s);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_5, "mdecrypt_generic", NULL, 47, td, _4);
+	ZEPHIR_CALL_FUNCTION(&_5, "mdecrypt_generic", NULL, 46, td, _4);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(ret);
 	zephir_fast_trim(ret, _5, NULL , ZEPHIR_TRIM_BOTH TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_deinit", NULL, 44, td);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_generic_deinit", NULL, 43, td);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_module_close", NULL, 45, td);
+	ZEPHIR_CALL_FUNCTION(NULL, "mcrypt_module_close", NULL, 44, td);
 	zephir_check_call_status();
 	RETURN_CCTOR(ret);
 

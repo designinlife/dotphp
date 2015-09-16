@@ -140,7 +140,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, execute) {
 	ZVAL_LONG(&_3, 3);
 	ZEPHIR_SINIT_VAR(_4);
 	ZVAL_LONG(&_4, 1);
-	ZEPHIR_CALL_FUNCTION(&_5, "swoole_server_create", NULL, 19, &_2, _1, &_3, &_4);
+	ZEPHIR_CALL_FUNCTION(&_5, "swoole_server_create", NULL, 20, &_2, _1, &_3, &_4);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("serv"), _5 TSRMLS_CC);
 	_6 = zephir_fetch_nproperty_this(this_ptr, SL("serv"), PH_NOISY_CC);

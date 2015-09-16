@@ -1,11 +1,15 @@
 namespace DotPHP\Utils;
 
 /**
- * 数据对象编/解码器。
+ * 数据编码/解码工具类。
  * 
+ * 注: 目前仅支持 JSON/MessagePack/igbinary 三种数据格式。
+ * 
+ * -------------------------------------------------
  * @author Lei Lee <web.developer.network@gmail.com>
  * @version 0.1a
  * @copyright (c) 2015-2016, Lei Lee
+ * -------------------------------------------------
  */
 final class Encoder implements \DotPHP\Interfaces\IEncoder {
 	const JSON = 1;
@@ -30,8 +34,8 @@ final class Encoder implements \DotPHP\Interfaces\IEncoder {
                 return msgpack_serialize(data);
             case 3:
                 return igbinary_serialize(data);
-            case 4:
-                return amf3_encode(data);
+            // case 4:
+            //     return amf3_encode(data);
             default:
                 throw new \DotPHP\NotImplementedException("接口尚未实现。");
 		}
@@ -52,8 +56,8 @@ final class Encoder implements \DotPHP\Interfaces\IEncoder {
                 return msgpack_unserialize(data);
             case 3:
                 return igbinary_unserialize(data);
-            case 4:
-                return amf3_decode(data);
+            // case 4:
+            //     return amf3_decode(data);
             default:
                 throw new \DotPHP\NotImplementedException("接口尚未实现。");
 		}

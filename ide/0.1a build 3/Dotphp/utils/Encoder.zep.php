@@ -3,11 +3,14 @@
 namespace DotPHP\Utils;
 
 /**
- * 数据对象编/解码器。
+ * 数据编码/解码工具类。
+ * 注: 目前仅支持 JSON/MessagePack/igbinary 三种数据格式。
+ * -------------------------------------------------
  *
  * @author Lei Lee <web.developer.network@gmail.com>
  * @version 0.1a
  * @copyright (c) 2015-2016, Lei Lee
+ * -------------------------------------------------
  */
 final class Encoder implements \DotPHP\Interfaces\IEncoder
 {

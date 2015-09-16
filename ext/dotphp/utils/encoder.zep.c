@@ -20,11 +20,15 @@
 
 
 /**
- * 数据对象编/解码器。
+ * 数据编码/解码工具类。
  * 
+ * 注: 目前仅支持 JSON/MessagePack/igbinary 三种数据格式。
+ * 
+ * -------------------------------------------------
  * @author Lei Lee <web.developer.network@gmail.com>
  * @version 0.1a
  * @copyright (c) 2015-2016, Lei Lee
+ * -------------------------------------------------
  */
 ZEPHIR_INIT_CLASS(DotPHP_Utils_Encoder) {
 
@@ -81,21 +85,16 @@ PHP_METHOD(DotPHP_Utils_Encoder, encode) {
 			RETURN_MM();
 		}
 		if (enc_type == 2) {
-			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 21, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 22, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
 		if (enc_type == 3) {
-			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 22, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 23, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
-		if (enc_type == 4) {
-			ZEPHIR_RETURN_CALL_FUNCTION("amf3_encode", NULL, 23, data);
-			zephir_check_call_status();
-			RETURN_MM();
-		}
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_notimplementedexception_ce, "接口尚未实现。", "dotphp/utils/encoder.zep", 36);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_notimplementedexception_ce, "接口尚未实现。", "dotphp/utils/encoder.zep", 40);
 		return;
 	} while(0);
 
@@ -140,12 +139,7 @@ PHP_METHOD(DotPHP_Utils_Encoder, decode) {
 			zephir_check_call_status();
 			RETURN_MM();
 		}
-		if (enc_type == 4) {
-			ZEPHIR_RETURN_CALL_FUNCTION("amf3_decode", NULL, 26, data);
-			zephir_check_call_status();
-			RETURN_MM();
-		}
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_notimplementedexception_ce, "接口尚未实现。", "dotphp/utils/encoder.zep", 58);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_notimplementedexception_ce, "接口尚未实现。", "dotphp/utils/encoder.zep", 62);
 		return;
 	} while(0);
 
