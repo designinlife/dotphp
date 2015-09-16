@@ -43,13 +43,6 @@ class SwooleBootstrap extends \DotPHP\AbstractBootstrap
 
 
     /**
-     * 初始化事件。
-     *
-     * @return void 
-     */
-    protected function initialize() {}
-
-    /**
      * 初始化完成事件。
      *
      * @return void 

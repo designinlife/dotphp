@@ -132,7 +132,7 @@ abstract class AbstractBootstrap
      *
      * @return void 
      */
-    abstract protected function initialize();
+    protected function initialize() {}
 
     /**
      * 初始化完成事件。

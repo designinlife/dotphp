@@ -206,6 +206,37 @@ PHP_METHOD(DotPHP_AbstractBootstrap, dispatch) {
  */
 PHP_METHOD(DotPHP_AbstractBootstrap, initialize) {
 
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0, *_1, *_2, *_3 = NULL, *_4, *_5 = NULL, *_6, *_7, *_8, *_9;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	object_init_ex(_0, dotphp_db_dbpdo_ce);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 3, this_ptr);
+	zephir_check_call_status();
+	zephir_update_property_this(this_ptr, SL("db"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_1);
+	object_init_ex(_1, dotphp_core_genericlogger_ce);
+	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 4, this_ptr);
+	zephir_check_call_status();
+	zephir_update_property_this(this_ptr, SL("logger"), _1 TSRMLS_CC);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("logger"), PH_NOISY_CC);
+	_4 = zephir_fetch_nproperty_this(this_ptr, SL("log_module"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(&_3, _2, "setmodule", NULL, 0, _4);
+	zephir_check_call_status();
+	_6 = zephir_fetch_nproperty_this(this_ptr, SL("log_mode"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(&_5, _3, "setmode", NULL, 0, _6);
+	zephir_check_call_status();
+	_7 = zephir_fetch_nproperty_this(this_ptr, SL("log_level"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(NULL, _5, "setlevel", NULL, 0, _7);
+	zephir_check_call_status();
+	_8 = zephir_fetch_nproperty_this(this_ptr, SL("db"), PH_NOISY_CC);
+	_9 = zephir_fetch_nproperty_this(this_ptr, SL("db_parameter"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(NULL, _8, "set", NULL, 0, _9);
+	zephir_check_call_status();
+	ZEPHIR_MM_RESTORE();
+
 }
 
 /**
@@ -340,9 +371,9 @@ PHP_METHOD(DotPHP_AbstractBootstrap, defErrorHandler) {
 	ZVAL_LONG(_2, 0);
 	ZEPHIR_INIT_VAR(_3);
 	ZVAL_LONG(_3, errline);
-	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 3, errstr, _1, _2, errfile, _3);
+	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 5, errstr, _1, _2, errfile, _3);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_0, "dotphp/abstractbootstrap.zep", 222 TSRMLS_CC);
+	zephir_throw_exception_debug(_0, "dotphp/abstractbootstrap.zep", 233 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
@@ -741,7 +772,7 @@ PHP_METHOD(DotPHP_AbstractBootstrap, dump) {
 
 	if (Z_TYPE_P(data) == IS_ARRAY) {
 		php_printf("%s", "<pre>");
-		ZEPHIR_CALL_FUNCTION(NULL, "print_r", NULL, 4, data);
+		ZEPHIR_CALL_FUNCTION(NULL, "print_r", NULL, 6, data);
 		zephir_check_call_status();
 		php_printf("%s", "</pre>");
 	} else {
@@ -783,12 +814,12 @@ PHP_METHOD(DotPHP_AbstractBootstrap, setup) {
 
 	zval *_1, *_3, *_4;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0, *_2 = NULL, *_5, *_6, *_7, *_8 = NULL, *_9, *_10 = NULL, *_11, *_12, *_13, *_14;
+	zval *_0, *_2 = NULL, *_5;
 
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("timezone"), PH_NOISY_CC);
-	ZEPHIR_CALL_FUNCTION(NULL, "date_default_timezone_set", NULL, 5, _0);
+	ZEPHIR_CALL_FUNCTION(NULL, "date_default_timezone_set", NULL, 7, _0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_1);
 	zephir_create_array(_1, 2, 0 TSRMLS_CC);
@@ -796,7 +827,7 @@ PHP_METHOD(DotPHP_AbstractBootstrap, setup) {
 	ZEPHIR_INIT_VAR(_2);
 	ZVAL_STRING(_2, "shutdown", 1);
 	zephir_array_fast_append(_1, _2);
-	ZEPHIR_CALL_FUNCTION(NULL, "register_shutdown_function", NULL, 6, _1);
+	ZEPHIR_CALL_FUNCTION(NULL, "register_shutdown_function", NULL, 8, _1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_3);
 	zephir_create_array(_3, 2, 0 TSRMLS_CC);
@@ -804,7 +835,7 @@ PHP_METHOD(DotPHP_AbstractBootstrap, setup) {
 	ZEPHIR_INIT_NVAR(_2);
 	ZVAL_STRING(_2, "defExceptionHandler", 1);
 	zephir_array_fast_append(_3, _2);
-	ZEPHIR_CALL_FUNCTION(NULL, "set_exception_handler", NULL, 7, _3);
+	ZEPHIR_CALL_FUNCTION(NULL, "set_exception_handler", NULL, 9, _3);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_4);
 	zephir_create_array(_4, 2, 0 TSRMLS_CC);
@@ -813,31 +844,7 @@ PHP_METHOD(DotPHP_AbstractBootstrap, setup) {
 	ZVAL_STRING(_2, "defErrorHandler", 1);
 	zephir_array_fast_append(_4, _2);
 	_5 = zephir_fetch_nproperty_this(this_ptr, SL("error_level"), PH_NOISY_CC);
-	ZEPHIR_CALL_FUNCTION(NULL, "set_error_handler", NULL, 8, _4, _5);
-	zephir_check_call_status();
-	ZEPHIR_INIT_NVAR(_2);
-	object_init_ex(_2, dotphp_db_dbpdo_ce);
-	ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL, 9, this_ptr);
-	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("db"), _2 TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_6);
-	object_init_ex(_6, dotphp_core_genericlogger_ce);
-	ZEPHIR_CALL_METHOD(NULL, _6, "__construct", NULL, 10, this_ptr);
-	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("logger"), _6 TSRMLS_CC);
-	_7 = zephir_fetch_nproperty_this(this_ptr, SL("logger"), PH_NOISY_CC);
-	_9 = zephir_fetch_nproperty_this(this_ptr, SL("log_module"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_8, _7, "setmodule", NULL, 0, _9);
-	zephir_check_call_status();
-	_11 = zephir_fetch_nproperty_this(this_ptr, SL("log_mode"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_10, _8, "setmode", NULL, 0, _11);
-	zephir_check_call_status();
-	_12 = zephir_fetch_nproperty_this(this_ptr, SL("log_level"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, _10, "setlevel", NULL, 0, _12);
-	zephir_check_call_status();
-	_13 = zephir_fetch_nproperty_this(this_ptr, SL("db"), PH_NOISY_CC);
-	_14 = zephir_fetch_nproperty_this(this_ptr, SL("db_parameter"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, _13, "set", NULL, 0, _14);
+	ZEPHIR_CALL_FUNCTION(NULL, "set_error_handler", NULL, 10, _4, _5);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

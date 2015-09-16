@@ -61,7 +61,7 @@ PHP_METHOD(DotPHP_Base_WebControllerBase, __construct) {
 
 
 
-	ZEPHIR_CALL_PARENT(NULL, dotphp_base_webcontrollerbase_ce, this_ptr, "__construct", &_0, 10, bootstrap);
+	ZEPHIR_CALL_PARENT(NULL, dotphp_base_webcontrollerbase_ce, this_ptr, "__construct", &_0, 4, bootstrap);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_1);
 	zephir_array_fetch_string(&_2, _SERVER, SL("REQUEST_METHOD"), PH_NOISY | PH_READONLY, "dotphp/base/webcontrollerbase.zep", 28 TSRMLS_CC);

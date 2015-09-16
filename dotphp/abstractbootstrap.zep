@@ -147,7 +147,18 @@ abstract class AbstractBootstrap {
      * 
      * @return void
      */
-    abstract protected function initialize() -> void {}
+    protected function initialize() -> void {
+        // 初始化必需的 IDb/ILogger 实例对象 ...
+        // -----------------------------------------------------
+        let this->db     = new \DotPHP\DB\DbPdo(this);
+        let this->logger = new \DotPHP\Core\GenericLogger(this);
+
+        this->logger->setModule(this->log_module)
+                    ->setMode(this->log_mode)
+                    ->setLevel(this->log_level);
+
+        this->db->set(this->db_parameter);
+    }
 
     /**
      * 初始化完成事件。
@@ -499,15 +510,5 @@ abstract class AbstractBootstrap {
         // 注册异常处理回调方法.
         set_exception_handler([this, "defExceptionHandler"]);
         set_error_handler([this, "defErrorHandler"], this->error_level);
-
-        // 初始化必需的 IDb/ILogger 实例对象 ...
-        let this->db     = new \DotPHP\DB\DbPdo(this);
-        let this->logger = new \DotPHP\Core\GenericLogger(this);
-
-        this->logger->setModule(this->log_module)
-                    ->setMode(this->log_mode)
-                    ->setLevel(this->log_level);
-
-        this->db->set(this->db_parameter);
     }
 }

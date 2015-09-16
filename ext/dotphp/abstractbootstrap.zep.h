@@ -106,7 +106,7 @@ ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, dispatch, arginfo_dotphp_abstractbootstrap_dispatch, ZEND_ACC_PUBLIC)
-	PHP_ME(DotPHP_AbstractBootstrap, initialize, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
+	PHP_ME(DotPHP_AbstractBootstrap, initialize, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_AbstractBootstrap, initializeComplete, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_AbstractBootstrap, route, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_AbstractBootstrap, validate, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)

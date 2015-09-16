@@ -12,9 +12,9 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/fcall.h"
 #include "kernel/object.h"
 #include "kernel/memory.h"
-#include "kernel/fcall.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
 #include "kernel/operators.h"
@@ -79,22 +79,25 @@ ZEPHIR_INIT_CLASS(DotPHP_WebBootstrap) {
  */
 PHP_METHOD(DotPHP_WebBootstrap, initialize) {
 
+	zend_class_entry *_3;
+	zval *cls_n, *_1, *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zend_class_entry *_2;
-	zval *cls_n, *_0, *_1 = NULL;
+	zephir_fcall_cache_entry *_0 = NULL;
 
 	ZEPHIR_MM_GROW();
 
+	ZEPHIR_CALL_PARENT(NULL, dotphp_webbootstrap_ce, this_ptr, "initialize", &_0, 47);
+	zephir_check_call_status();
 	cls_n = zephir_fetch_nproperty_this(this_ptr, SL("template_class"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_0);
-	zephir_fetch_safe_class(_1, cls_n);
-	_2 = zend_fetch_class(Z_STRVAL_P(_1), Z_STRLEN_P(_1), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
-	object_init_ex(_0, _2);
-	if (zephir_has_constructor(_0 TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 0, this_ptr);
+	ZEPHIR_INIT_VAR(_1);
+	zephir_fetch_safe_class(_2, cls_n);
+	_3 = zend_fetch_class(Z_STRVAL_P(_2), Z_STRLEN_P(_2), ZEND_FETCH_CLASS_AUTO TSRMLS_CC);
+	object_init_ex(_1, _3);
+	if (zephir_has_constructor(_1 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0, this_ptr);
 		zephir_check_call_status();
 	}
-	zephir_update_property_this(this_ptr, SL("template_instance"), _0 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("template_instance"), _1 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -127,7 +130,7 @@ PHP_METHOD(DotPHP_WebBootstrap, route) {
 	ZVAL_STRING(_0, "Index", ZEPHIR_TEMP_PARAM_COPY);
 	ZEPHIR_INIT_VAR(_1);
 	ZVAL_STRING(_1, "defaults", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 47, _0, _1);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 48, _0, _1);
 	zephir_check_temp_parameter(_0);
 	zephir_check_temp_parameter(_1);
 	zephir_check_call_status();
@@ -166,11 +169,11 @@ PHP_METHOD(DotPHP_WebBootstrap, execute) {
 
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getcontrollerns", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_1, route_message, "getcontroller", NULL, 48);
+	ZEPHIR_CALL_METHOD(&_1, route_message, "getcontroller", NULL, 49);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(cls_n);
 	ZEPHIR_CONCAT_VSV(cls_n, _0, "\\", _1);
-	ZEPHIR_CALL_METHOD(&cls_m, route_message, "getmethod", NULL, 49);
+	ZEPHIR_CALL_METHOD(&cls_m, route_message, "getmethod", NULL, 50);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_2);
 	zephir_fetch_safe_class(_3, cls_n);

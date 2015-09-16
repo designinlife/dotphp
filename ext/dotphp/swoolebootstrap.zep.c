@@ -67,17 +67,6 @@ ZEPHIR_INIT_CLASS(DotPHP_SwooleBootstrap) {
 }
 
 /**
- * 初始化事件。
- * 
- * @return void
- */
-PHP_METHOD(DotPHP_SwooleBootstrap, initialize) {
-
-
-
-}
-
-/**
  * 初始化完成事件。
  * 
  * @return void
@@ -130,7 +119,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, execute) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("event_dispatcher"), PH_NOISY_CC);
 	if (ZEPHIR_IS_EMPTY(_0)) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_configurationexception_ce, "尚未设置 ISwooleEventDispatcher 对象。", "dotphp/swoolebootstrap.zep", 79);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_configurationexception_ce, "尚未设置 ISwooleEventDispatcher 对象。", "dotphp/swoolebootstrap.zep", 72);
 		return;
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);

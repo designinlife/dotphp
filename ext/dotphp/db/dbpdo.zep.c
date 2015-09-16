@@ -78,7 +78,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, __construct) {
 
 
 
-	ZEPHIR_CALL_PARENT(NULL, dotphp_db_dbpdo_ce, this_ptr, "__construct", &_0, 10, bootstrap);
+	ZEPHIR_CALL_PARENT(NULL, dotphp_db_dbpdo_ce, this_ptr, "__construct", &_0, 4, bootstrap);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

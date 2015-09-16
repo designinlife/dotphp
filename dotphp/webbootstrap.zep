@@ -51,6 +51,8 @@ class WebBootstrap extends \DotPHP\AbstractBootstrap {
      * @return void
      */
     protected function initialize() -> void {
+        parent::initialize();
+
         var cls_n;
         let cls_n = this->template_class;
 

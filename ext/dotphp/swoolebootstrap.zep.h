@@ -3,7 +3,6 @@ extern zend_class_entry *dotphp_swoolebootstrap_ce;
 
 ZEPHIR_INIT_CLASS(DotPHP_SwooleBootstrap);
 
-PHP_METHOD(DotPHP_SwooleBootstrap, initialize);
 PHP_METHOD(DotPHP_SwooleBootstrap, initializeComplete);
 PHP_METHOD(DotPHP_SwooleBootstrap, route);
 PHP_METHOD(DotPHP_SwooleBootstrap, validate);
@@ -32,7 +31,6 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_swoolebootstrap_seteventdispatcher, 0, 0, 
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(dotphp_swoolebootstrap_method_entry) {
-	PHP_ME(DotPHP_SwooleBootstrap, initialize, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_SwooleBootstrap, initializeComplete, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_SwooleBootstrap, route, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_SwooleBootstrap, validate, NULL, ZEND_ACC_PROTECTED)

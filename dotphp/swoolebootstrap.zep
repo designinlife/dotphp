@@ -39,13 +39,6 @@ class SwooleBootstrap extends \DotPHP\AbstractBootstrap {
     private event_dispatcher = null;
 
     /**
-     * 初始化事件。
-     * 
-     * @return void
-     */
-    protected function initialize() -> void {}
-
-    /**
      * 初始化完成事件。
      * 
      * @return void
