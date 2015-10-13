@@ -58,7 +58,7 @@
     "version": "0.1.2 alpha",
     "verbose": true,
     "requires": {
-        "extensions": ["json", "msgpack", "igbinary", "swoole", "redis"]
+        "extensions": ["json", "msgpack", "igbinary", "swoole"]
     },
     "globals": {
         "debug": {
