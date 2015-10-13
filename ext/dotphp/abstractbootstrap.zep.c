@@ -270,8 +270,10 @@ PHP_METHOD(DotPHP_AbstractBootstrap, loadComponents) {
 	zephir_update_property_this(this_ptr, SL("db"), _0 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_1);
 	object_init_ex(_1, zephir_get_internal_ce(SS("redis") TSRMLS_CC));
-	ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0);
-	zephir_check_call_status();
+	if (zephir_has_constructor(_1 TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0);
+		zephir_check_call_status();
+	}
 	zephir_update_property_this(this_ptr, SL("cache"), _1 TSRMLS_CC);
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("cache_parameter"), PH_NOISY_CC);
 	if (!(ZEPHIR_IS_EMPTY(_2))) {

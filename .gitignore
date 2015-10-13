@@ -45,3 +45,4 @@ Temporary Items
 *.exp
 *.sh
 ide/*
+.temp/*
