@@ -44,4 +44,4 @@ Temporary Items
 *.log
 *.exp
 *.sh
-ide/
+ide/*
