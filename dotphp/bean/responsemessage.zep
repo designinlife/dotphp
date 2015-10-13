@@ -33,8 +33,8 @@ class ResponseMessage extends AbstractResponseMessage {
 
         let s   = \DotPHP\Utils\Encoder::encode(d, \DotPHP\Utils\Encoder::MSGPACK);
         let len = strlen(s);
-        // let es  = pack("cNa*", false, len, s);
-        let es  = pack("Na*", len, s);
+        let es  = pack("cNa*", false, len, s);
+        // let es  = pack("Na*", len, s);
 
         return es;
     }
