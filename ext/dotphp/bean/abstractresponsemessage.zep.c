@@ -46,6 +46,8 @@ ZEPHIR_INIT_CLASS(DotPHP_Bean_AbstractResponseMessage) {
 
 	zend_declare_property_null(dotphp_bean_abstractresponsemessage_ce, SL("_trace"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
+	zend_declare_property_string(dotphp_bean_abstractresponsemessage_ce, SL("_delimiter"), "\r\r", ZEND_ACC_PROTECTED TSRMLS_CC);
+
 	return SUCCESS;
 
 }
@@ -57,6 +59,7 @@ ZEPHIR_INIT_CLASS(DotPHP_Bean_AbstractResponseMessage) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getErrorCode) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_errno");
 
@@ -92,6 +95,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setErrorCode) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getErrorMessage) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_errstr");
 
@@ -126,6 +130,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setErrorMessage) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getTrace) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_trace");
 
@@ -160,6 +165,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setTrace) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getModule) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_module");
 
@@ -195,6 +201,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setModule) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getMethod) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_method");
 
@@ -230,6 +237,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setMethod) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getData) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_data");
 
@@ -261,6 +269,7 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setData) {
  */
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getOpCode) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "_op_code");
 
@@ -286,6 +295,41 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setOpCode) {
 	ZVAL_LONG(_0, op_code);
 	zephir_update_property_this(this_ptr, SL("_op_code"), _0 TSRMLS_CC);
 	RETURN_THISW();
+
+}
+
+/**
+ * 获取消息分隔符。
+ * 
+ * @return int
+ */
+PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getDelimiter) {
+
+	
+
+	RETURN_MEMBER(this_ptr, "_delimiter");
+
+}
+
+/**
+ * 设置消息分隔符。
+ * 
+ * @param string delimiter
+ * @return \DotPHP\Bean\AbstractResponseMessage
+ */
+PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setDelimiter) {
+
+	zval *delimiter_param = NULL;
+	zval *delimiter = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &delimiter_param);
+
+	zephir_get_strval(delimiter, delimiter_param);
+
+
+	zephir_update_property_this(this_ptr, SL("_delimiter"), delimiter TSRMLS_CC);
+	RETURN_THIS();
 
 }
 

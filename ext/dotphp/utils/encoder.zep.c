@@ -60,7 +60,7 @@ ZEPHIR_INIT_CLASS(DotPHP_Utils_Encoder) {
 PHP_METHOD(DotPHP_Utils_Encoder, encode) {
 
 	int enc_type, options, ZEPHIR_LAST_CALL_STATUS;
-	zval *data, *enc_type_param = NULL, *options_param = NULL, _0;
+	zval *data, *enc_type_param = NULL, *options_param = NULL, _0$$3;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &data, &enc_type_param, &options_param);
@@ -79,18 +79,18 @@ PHP_METHOD(DotPHP_Utils_Encoder, encode) {
 
 	do {
 		if (enc_type == 1) {
-			ZEPHIR_SINIT_VAR(_0);
-			ZVAL_LONG(&_0, options);
-			zephir_json_encode(return_value, &(return_value), data, zephir_get_intval(&_0)  TSRMLS_CC);
+			ZEPHIR_SINIT_VAR(_0$$3);
+			ZVAL_LONG(&_0$$3, options);
+			zephir_json_encode(return_value, &(return_value), data, zephir_get_intval(&_0$$3)  TSRMLS_CC);
 			RETURN_MM();
 		}
 		if (enc_type == 2) {
-			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 22, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 24, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
 		if (enc_type == 3) {
-			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 23, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 25, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
@@ -130,12 +130,12 @@ PHP_METHOD(DotPHP_Utils_Encoder, decode) {
 			RETURN_MM();
 		}
 		if (enc_type == 2) {
-			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unserialize", NULL, 24, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unserialize", NULL, 26, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
 		if (enc_type == 3) {
-			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_unserialize", NULL, 25, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_unserialize", NULL, 27, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}

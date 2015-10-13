@@ -31,7 +31,14 @@
  */
 ZEPHIR_INIT_CLASS(DotPHP_SwooleBootstrap) {
 
-	ZEPHIR_REGISTER_CLASS_EX(DotPHP, SwooleBootstrap, dotphp, swoolebootstrap, dotphp_abstractbootstrap_ce, dotphp_swoolebootstrap_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS_EX(DotPHP, SwooleBootstrap, dotphp, swoolebootstrap, dotphp_abstractbootstrap_ce, dotphp_swoolebootstrap_method_entry, ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
+
+	/**
+	 * 设置主机地址。
+	 * 
+	 * @var string
+	 */
+	zend_declare_property_string(dotphp_swoolebootstrap_ce, SL("host"), "0.0.0.0", ZEND_ACC_PRIVATE TSRMLS_CC);
 
 	/**
 	 * 模板目录。
@@ -73,6 +80,7 @@ ZEPHIR_INIT_CLASS(DotPHP_SwooleBootstrap) {
  */
 PHP_METHOD(DotPHP_SwooleBootstrap, initializeComplete) {
 
+	
 
 
 }
@@ -84,6 +92,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, initializeComplete) {
  */
 PHP_METHOD(DotPHP_SwooleBootstrap, route) {
 
+	
 
 	RETURN_NULL();
 
@@ -96,6 +105,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, route) {
  */
 PHP_METHOD(DotPHP_SwooleBootstrap, validate) {
 
+	
 
 
 }
@@ -119,7 +129,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, execute) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("event_dispatcher"), PH_NOISY_CC);
 	if (ZEPHIR_IS_EMPTY(_0)) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_configurationexception_ce, "尚未设置 ISwooleEventDispatcher 对象。", "dotphp/swoolebootstrap.zep", 72);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_configurationexception_ce, "尚未设置 ISwooleEventDispatcher 对象。", "dotphp/swoolebootstrap.zep", 79);
 		return;
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);
@@ -129,7 +139,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, execute) {
 	ZVAL_LONG(&_3, 3);
 	ZEPHIR_SINIT_VAR(_4);
 	ZVAL_LONG(&_4, 1);
-	ZEPHIR_CALL_FUNCTION(&_5, "swoole_server_create", NULL, 20, &_2, _1, &_3, &_4);
+	ZEPHIR_CALL_FUNCTION(&_5, "swoole_server_create", NULL, 22, &_2, _1, &_3, &_4);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("serv"), _5 TSRMLS_CC);
 	_6 = zephir_fetch_nproperty_this(this_ptr, SL("serv"), PH_NOISY_CC);
@@ -326,12 +336,48 @@ PHP_METHOD(DotPHP_SwooleBootstrap, execute) {
 }
 
 /**
+ * 获取服务监听地址。
+ * 
+ * @return string
+ */
+PHP_METHOD(DotPHP_SwooleBootstrap, getHost) {
+
+	
+
+	RETURN_MEMBER(this_ptr, "host");
+
+}
+
+/**
+ * 设置服务监听地址。
+ * 
+ * @param string host
+ * @return \DotPHP\SwooleBootstrap
+ */
+PHP_METHOD(DotPHP_SwooleBootstrap, setHost) {
+
+	zval *host_param = NULL;
+	zval *host = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &host_param);
+
+	zephir_get_strval(host, host_param);
+
+
+	zephir_update_property_this(this_ptr, SL("host"), host TSRMLS_CC);
+	RETURN_THIS();
+
+}
+
+/**
  * 获取服务绑定端口。
  * 
  * @return int
  */
 PHP_METHOD(DotPHP_SwooleBootstrap, getPort) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "port");
 
@@ -367,6 +413,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, setPort) {
  */
 PHP_METHOD(DotPHP_SwooleBootstrap, getServerOptions) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "server_options");
 
@@ -415,7 +462,7 @@ PHP_METHOD(DotPHP_SwooleBootstrap, setEventDispatcher) {
 
 static zend_object_value zephir_init_properties_DotPHP_SwooleBootstrap(zend_class_entry *class_type TSRMLS_DC) {
 
-		zval *_0, *_1;
+		zval *_0, *_1$$3;
 
 		ZEPHIR_MM_GROW();
 	
@@ -424,9 +471,9 @@ static zend_object_value zephir_init_properties_DotPHP_SwooleBootstrap(zend_clas
 		ZEPHIR_CREATE_OBJECT(this_ptr, class_type);
 		_0 = zephir_fetch_nproperty_this(this_ptr, SL("server_options"), PH_NOISY_CC);
 		if (Z_TYPE_P(_0) == IS_NULL) {
-			ZEPHIR_INIT_VAR(_1);
-			array_init(_1);
-			zephir_update_property_this(this_ptr, SL("server_options"), _1 TSRMLS_CC);
+			ZEPHIR_INIT_VAR(_1$$3);
+			array_init(_1$$3);
+			zephir_update_property_this(this_ptr, SL("server_options"), _1$$3 TSRMLS_CC);
 		}
 		ZEPHIR_MM_RESTORE();
 		return Z_OBJVAL_P(this_ptr);

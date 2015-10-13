@@ -15,9 +15,9 @@
 #include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/array.h"
+#include "kernel/operators.h"
 #include "kernel/fcall.h"
 #include "kernel/concat.h"
-#include "kernel/operators.h"
 
 
 /**
@@ -70,6 +70,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, __construct) {
  */
 PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, __destruct) {
 
+	
 
 	zephir_unset_property(this_ptr, "bootstrap" TSRMLS_CC);
 
@@ -84,13 +85,13 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, __destruct) {
  *     3).已监听所有 TCP/UDP 端口
  *     4).已监听了 Timer 定时器
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @return void
  */
 PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onStart) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *serv, *_0, *_1, *_2, *_3 = NULL, *_4;
+	zval *serv, *_0, *_1 = NULL, *_2$$3, *_3$$3 = NULL, *_4$$3, *_5$$3 = NULL, *_6$$3;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &serv);
@@ -98,15 +99,20 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onStart) {
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("bootstrap"), PH_NOISY_CC);
-	ZEPHIR_OBS_VAR(_1);
-	zephir_read_property(&_1, _0, SL("logger"), PH_NOISY_CC);
-	_2 = zephir_fetch_nproperty_this(this_ptr, SL("bootstrap"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&_3, _2, "getport", NULL, 0);
+	ZEPHIR_CALL_METHOD(&_1, _0, "getlogger", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_INIT_VAR(_4);
-	ZEPHIR_CONCAT_SVS(_4, "TCP 服务器已启动。(0.0.0.0:", _3, ")");
-	ZEPHIR_CALL_METHOD(NULL, _1, "info", NULL, 0, _4);
-	zephir_check_call_status();
+	if (!(ZEPHIR_IS_EMPTY(_1))) {
+		_2$$3 = zephir_fetch_nproperty_this(this_ptr, SL("bootstrap"), PH_NOISY_CC);
+		ZEPHIR_CALL_METHOD(&_3$$3, _2$$3, "getlogger", NULL, 0);
+		zephir_check_call_status();
+		_4$$3 = zephir_fetch_nproperty_this(this_ptr, SL("bootstrap"), PH_NOISY_CC);
+		ZEPHIR_CALL_METHOD(&_5$$3, _4$$3, "getport", NULL, 0);
+		zephir_check_call_status();
+		ZEPHIR_INIT_VAR(_6$$3);
+		ZEPHIR_CONCAT_SVS(_6$$3, "TCP 服务器已启动。(0.0.0.0:", _5$$3, ")");
+		ZEPHIR_CALL_METHOD(NULL, _3$$3, "info", NULL, 0, _6$$3);
+		zephir_check_call_status();
+	}
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -114,7 +120,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onStart) {
 /**
  * 服务器关闭事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @return void
  */
 PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onShutdown) {
@@ -131,7 +137,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onShutdown) {
 /**
  * 管理进程启动事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @return void
  */
 PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onManagerStart) {
@@ -165,7 +171,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onManagerStop) {
 /**
  * 工作进程启动事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int worker_id
  * @return void
  */
@@ -185,7 +191,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onWorkerStart) {
 /**
  * 工作进程结束事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int worker_id
  * @return void
  */
@@ -205,7 +211,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onWorkerStop) {
 /**
  * 工作进程出错事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int worker_id
  * @param int worker_pid
  * @param int exit_code
@@ -229,7 +235,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onWorkerError) {
 /**
  * 定时器事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int interval
  * @return void
  */
@@ -249,7 +255,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onTimer) {
 /**
  * 任务事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int task_id
  * @param int from_id
  * @param string data
@@ -275,7 +281,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onTask) {
 /**
  * 任务完成事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int task_id
  * @param string data
  * @return void
@@ -299,7 +305,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onFinish) {
 /**
  * 客户端连接事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int fd
  * @param int from_id
  * @return void
@@ -311,7 +317,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onConnect) {
 /**
  * 客户端断开事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int fd
  * @param int from_id
  * @return void
@@ -323,7 +329,7 @@ PHP_METHOD(DotPHP_Core_SwooleEventDispatcher, onClose) {
 /**
  * 数据接收事件。
  * 
- * @param swoole_server serv
+ * @param \swoole_server serv
  * @param int fd
  * @param int from_id
  * @param string data

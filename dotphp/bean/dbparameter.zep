@@ -58,7 +58,7 @@ final class DbParameter {
      * 设置主机地址。
      * 
      * @param string host
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setHost(string host) -> <\DotPHP\Bean\DbParameter> {
         let this->host = host;
@@ -78,7 +78,7 @@ final class DbParameter {
      * 设置端口。
      * 
      * @param int port
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setPort(string port) -> <\DotPHP\Bean\DbParameter> {
         let this->port = port;
@@ -98,7 +98,7 @@ final class DbParameter {
      * 设置登录帐号。
      * 
      * @param string user
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setUser(string user) -> <\DotPHP\Bean\DbParameter> {
         let this->user = user;
@@ -118,7 +118,7 @@ final class DbParameter {
      * 设置密码。
      * 
      * @param string passwd
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setPass(string passwd) -> <\DotPHP\Bean\DbParameter> {
         let this->passwd = passwd;
@@ -138,7 +138,7 @@ final class DbParameter {
      * 设置数据库名称。
      * 
      * @param string db
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setDb(string db) -> <\DotPHP\Bean\DbParameter> {
         let this->db = db;
@@ -158,7 +158,7 @@ final class DbParameter {
      * 设置字符集。
      * 
      * @param string charset
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setCharset(string charset) -> <\DotPHP\Bean\DbParameter> {
         let this->charset = charset;
@@ -178,7 +178,7 @@ final class DbParameter {
      * 设置 UNIX 套接字地址。
      * 
      * @param string unix_socket
-     * @return <\DotPHP\Bean\DbParameter>
+     * @return \DotPHP\Bean\DbParameter
      */
     public function setUnixSocket(string unix_socket) -> <\DotPHP\Bean\DbParameter> {
         let this->unix_socket = unix_socket;

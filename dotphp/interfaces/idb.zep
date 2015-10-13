@@ -21,23 +21,23 @@ interface IDb {
     /**
      * 开启事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function begin() -> void;
+    public function begin() -> boolean;
 
     /**
      * 提交事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function commit() -> void;
+    public function commit() -> boolean;
 
     /**
      * 回滚事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function rollback() -> void;
+    public function rollback() -> boolean;
 
     /**
      * 执行一条或多条 SQL 语句并返回影响的行数。

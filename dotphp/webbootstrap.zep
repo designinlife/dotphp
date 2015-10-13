@@ -72,7 +72,11 @@ class WebBootstrap extends \DotPHP\AbstractBootstrap {
      * @return \DotPHP\Bean\RouteMessage
      */
     protected function route() -> <\DotPHP\Bean\RouteMessage> | null {
-        return new \DotPHP\Bean\RouteMessage("Index", "defaults");
+        if this->route_parser != null {
+            return this->route_parser->parse();
+        } else {
+            return new \DotPHP\Bean\RouteMessage("Index", "defaults");
+        }
     }
 
     /**
@@ -99,6 +103,29 @@ class WebBootstrap extends \DotPHP\AbstractBootstrap {
         this->ctl_instance->before();
         call_user_func_array([this->ctl_instance, cls_m], []);
         this->ctl_instance->after();
+    }
+
+    /**
+     * 缺省异常处理。
+     * 
+     * @return void
+     */
+    public function defExceptionHandler(<\Exception> ex) -> void {
+        echo "<!DOCTYPE html><html lang=\"zh-CN\"><head><title>系统错误!</title><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/><style type=\"text/css\">";
+        echo "html, body { font-family: SimSun, Tahoma, Arial; font-size: 12px; }";
+        echo "#container { margin: 18px; }";
+        echo "p { line-height: 20px; }";
+        echo "pre { padding: 12px; background: #FFC; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; }";
+        echo "</style></head><body>";
+
+        echo "<div id=\"container\"><h1 style=\"font-family: Arial;\">Exception Found!</h1><p>", ex->getMessage(), "</p>";
+
+        if this->_debug {
+            echo "<pre>", ex->getTraceAsString(), "</pre></div>";
+        }
+        
+        echo "</body></html>";
+        exit(2);
     }
 
     /**

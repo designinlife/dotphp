@@ -64,6 +64,7 @@ PHP_METHOD(DotPHP_Base_DotBase, __construct) {
  */
 PHP_METHOD(DotPHP_Base_DotBase, __destruct) {
 
+	
 
 	zephir_unset_property(this_ptr, "bootstrap" TSRMLS_CC);
 

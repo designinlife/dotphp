@@ -7,6 +7,8 @@ PHP_METHOD(DotPHP_SwooleBootstrap, initializeComplete);
 PHP_METHOD(DotPHP_SwooleBootstrap, route);
 PHP_METHOD(DotPHP_SwooleBootstrap, validate);
 PHP_METHOD(DotPHP_SwooleBootstrap, execute);
+PHP_METHOD(DotPHP_SwooleBootstrap, getHost);
+PHP_METHOD(DotPHP_SwooleBootstrap, setHost);
 PHP_METHOD(DotPHP_SwooleBootstrap, getPort);
 PHP_METHOD(DotPHP_SwooleBootstrap, setPort);
 PHP_METHOD(DotPHP_SwooleBootstrap, getServerOptions);
@@ -16,6 +18,10 @@ static zend_object_value zephir_init_properties_DotPHP_SwooleBootstrap(zend_clas
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_swoolebootstrap_execute, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, route_message, DotPHP\\Bean\\RouteMessage, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_swoolebootstrap_sethost, 0, 0, 1)
+	ZEND_ARG_INFO(0, host)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_swoolebootstrap_setport, 0, 0, 1)
@@ -35,6 +41,8 @@ ZEPHIR_INIT_FUNCS(dotphp_swoolebootstrap_method_entry) {
 	PHP_ME(DotPHP_SwooleBootstrap, route, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_SwooleBootstrap, validate, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_SwooleBootstrap, execute, arginfo_dotphp_swoolebootstrap_execute, ZEND_ACC_PROTECTED)
+	PHP_ME(DotPHP_SwooleBootstrap, getHost, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_SwooleBootstrap, setHost, arginfo_dotphp_swoolebootstrap_sethost, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_SwooleBootstrap, getPort, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_SwooleBootstrap, setPort, arginfo_dotphp_swoolebootstrap_setport, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_SwooleBootstrap, getServerOptions, NULL, ZEND_ACC_PUBLIC)

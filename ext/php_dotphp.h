@@ -11,11 +11,11 @@
 #include "kernel/globals.h"
 
 #define PHP_DOTPHP_NAME        "DotPHP"
-#define PHP_DOTPHP_VERSION     "0.1a build 3"
+#define PHP_DOTPHP_VERSION     "0.1.2 alpha"
 #define PHP_DOTPHP_EXTNAME     "dotphp"
 #define PHP_DOTPHP_AUTHOR      "Lei Lee"
-#define PHP_DOTPHP_ZEPVERSION  "0.7.1b"
-#define PHP_DOTPHP_DESCRIPTION "DotPHP - A simple PHP development framework."
+#define PHP_DOTPHP_ZEPVERSION  "0.9a-dev"
+#define PHP_DOTPHP_DESCRIPTION "A simple PHP framework for TCP Socket / Web / CLI environment for rapid development."
 
 
 
@@ -47,6 +47,9 @@ ZEND_BEGIN_MODULE_GLOBALS(dotphp)
 	zval *global_false;
 	zval *global_null;
 	
+	zend_bool debug;
+
+
 ZEND_END_MODULE_GLOBALS(dotphp)
 
 #ifdef ZTS

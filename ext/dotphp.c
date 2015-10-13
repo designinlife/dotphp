@@ -32,16 +32,23 @@ zend_class_entry *dotphp_interfaces_idb_ce;
 zend_class_entry *dotphp_interfaces_iencoder_ce;
 zend_class_entry *dotphp_interfaces_ilogger_ce;
 zend_class_entry *dotphp_interfaces_iswooleeventdispatcher_ce;
+zend_class_entry *dotphp_interfaces_iprocess_ce;
+zend_class_entry *dotphp_interfaces_irouteparser_ce;
 zend_class_entry *dotphp_interfaces_itemplate_ce;
 zend_class_entry *dotphp_baseexception_ce;
 zend_class_entry *dotphp_base_dotbase_ce;
 zend_class_entry *dotphp_abstractbootstrap_ce;
+zend_class_entry *dotphp_base_processbase_ce;
+zend_class_entry *dotphp_bean_abstractresponsemessage_ce;
 zend_class_entry *dotphp_argumentexception_ce;
+zend_class_entry *dotphp_base_multiprocessbase_ce;
 zend_class_entry *dotphp_base_swoolebase_ce;
 zend_class_entry *dotphp_base_webcontrollerbase_ce;
-zend_class_entry *dotphp_bean_abstractresponsemessage_ce;
+zend_class_entry *dotphp_bean_cacheparameter_ce;
 zend_class_entry *dotphp_bean_dbparameter_ce;
+zend_class_entry *dotphp_bean_responsemessage_ce;
 zend_class_entry *dotphp_bean_routemessage_ce;
+zend_class_entry *dotphp_clibootstrap_ce;
 zend_class_entry *dotphp_configurationexception_ce;
 zend_class_entry *dotphp_core_genericlogger_ce;
 zend_class_entry *dotphp_core_socketclient_ce;
@@ -50,6 +57,7 @@ zend_class_entry *dotphp_dataexception_ce;
 zend_class_entry *dotphp_db_dbpdo_ce;
 zend_class_entry *dotphp_dbexception_ce;
 zend_class_entry *dotphp_dot_ce;
+zend_class_entry *dotphp_filenotfoundexception_ce;
 zend_class_entry *dotphp_httpexception_ce;
 zend_class_entry *dotphp_notimplementedexception_ce;
 zend_class_entry *dotphp_parseexception_ce;
@@ -69,7 +77,7 @@ zend_class_entry *dotphp_webbootstrap_ce;
 ZEND_DECLARE_MODULE_GLOBALS(dotphp)
 
 PHP_INI_BEGIN()
-	
+	STD_PHP_INI_BOOLEAN("debug", "1", PHP_INI_ALL, OnUpdateBool, debug, zend_dotphp_globals, dotphp_globals)
 PHP_INI_END()
 
 static PHP_MINIT_FUNCTION(dotphp)
@@ -95,16 +103,23 @@ static PHP_MINIT_FUNCTION(dotphp)
 	ZEPHIR_INIT(DotPHP_Interfaces_IEncoder);
 	ZEPHIR_INIT(DotPHP_Interfaces_ILogger);
 	ZEPHIR_INIT(DotPHP_Interfaces_ISwooleEventDispatcher);
+	ZEPHIR_INIT(DotPHP_Interfaces_IProcess);
+	ZEPHIR_INIT(DotPHP_Interfaces_IRouteParser);
 	ZEPHIR_INIT(DotPHP_Interfaces_ITemplate);
 	ZEPHIR_INIT(DotPHP_BaseException);
 	ZEPHIR_INIT(DotPHP_Base_DotBase);
 	ZEPHIR_INIT(DotPHP_AbstractBootstrap);
+	ZEPHIR_INIT(DotPHP_Base_ProcessBase);
+	ZEPHIR_INIT(DotPHP_Bean_AbstractResponseMessage);
 	ZEPHIR_INIT(DotPHP_ArgumentException);
+	ZEPHIR_INIT(DotPHP_Base_MultiProcessBase);
 	ZEPHIR_INIT(DotPHP_Base_SwooleBase);
 	ZEPHIR_INIT(DotPHP_Base_WebControllerBase);
-	ZEPHIR_INIT(DotPHP_Bean_AbstractResponseMessage);
+	ZEPHIR_INIT(DotPHP_Bean_CacheParameter);
 	ZEPHIR_INIT(DotPHP_Bean_DbParameter);
+	ZEPHIR_INIT(DotPHP_Bean_ResponseMessage);
 	ZEPHIR_INIT(DotPHP_Bean_RouteMessage);
+	ZEPHIR_INIT(DotPHP_CliBootstrap);
 	ZEPHIR_INIT(DotPHP_ConfigurationException);
 	ZEPHIR_INIT(DotPHP_Core_GenericLogger);
 	ZEPHIR_INIT(DotPHP_Core_SocketClient);
@@ -113,6 +128,7 @@ static PHP_MINIT_FUNCTION(dotphp)
 	ZEPHIR_INIT(DotPHP_DataException);
 	ZEPHIR_INIT(DotPHP_DbException);
 	ZEPHIR_INIT(DotPHP_Dot);
+	ZEPHIR_INIT(DotPHP_FileNotFoundException);
 	ZEPHIR_INIT(DotPHP_HttpException);
 	ZEPHIR_INIT(DotPHP_NotImplementedException);
 	ZEPHIR_INIT(DotPHP_ParseException);
@@ -168,6 +184,7 @@ static void php_zephir_init_globals(zend_dotphp_globals *dotphp_globals TSRMLS_D
 	/* Static cache */
 	memset(dotphp_globals->scache, '\0', sizeof(zephir_fcall_cache_entry*) * ZEPHIR_MAX_CACHE_SLOTS);
 
+	dotphp_globals->debug = 1;
 
 }
 

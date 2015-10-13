@@ -17,6 +17,8 @@ PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getData);
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setData);
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getOpCode);
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setOpCode);
+PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, getDelimiter);
+PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, setDelimiter);
 PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, encode);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_bean_abstractresponsemessage_seterrorcode, 0, 0, 1)
@@ -47,6 +49,10 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_bean_abstractresponsemessage_setopcode, 0,
 	ZEND_ARG_INFO(0, op_code)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_bean_abstractresponsemessage_setdelimiter, 0, 0, 1)
+	ZEND_ARG_INFO(0, delimiter)
+ZEND_END_ARG_INFO()
+
 ZEPHIR_INIT_FUNCS(dotphp_bean_abstractresponsemessage_method_entry) {
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, getErrorCode, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, setErrorCode, arginfo_dotphp_bean_abstractresponsemessage_seterrorcode, ZEND_ACC_PUBLIC)
@@ -62,6 +68,8 @@ ZEPHIR_INIT_FUNCS(dotphp_bean_abstractresponsemessage_method_entry) {
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, setData, arginfo_dotphp_bean_abstractresponsemessage_setdata, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, getOpCode, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, setOpCode, arginfo_dotphp_bean_abstractresponsemessage_setopcode, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_Bean_AbstractResponseMessage, getDelimiter, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_Bean_AbstractResponseMessage, setDelimiter, arginfo_dotphp_bean_abstractresponsemessage_setdelimiter, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_Bean_AbstractResponseMessage, encode, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };

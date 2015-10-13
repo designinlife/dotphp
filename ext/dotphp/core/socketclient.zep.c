@@ -79,6 +79,7 @@ PHP_METHOD(DotPHP_Core_SocketClient, __construct) {
  */
 PHP_METHOD(DotPHP_Core_SocketClient, __destruct) {
 
+	
 
 	zephir_unset_property(this_ptr, "instance" TSRMLS_CC);
 
@@ -91,40 +92,40 @@ PHP_METHOD(DotPHP_Core_SocketClient, __destruct) {
  */
 PHP_METHOD(DotPHP_Core_SocketClient, connect) {
 
+	zval *_0, *_1$$3, *_2$$3 = NULL, *_3$$3, *_4$$3 = NULL, *_5$$3, *_6$$3, *_7$$4, *_8$$4, *_9$$4, *_10$$4, *_11$$4, *_12$$4;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0, *_1, *_2 = NULL, *_3, *_4 = NULL, *_5, *_6, *_7, *_8, *_9, *_10, *_11;
 
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 	if (!(zephir_is_true(_0))) {
-		ZEPHIR_INIT_VAR(_1);
-		object_init_ex(_1, zephir_get_internal_ce(SS("swoole_client") TSRMLS_CC));
-		ZEPHIR_INIT_VAR(_2);
-		ZVAL_LONG(_2, 1);
-		ZEPHIR_CALL_METHOD(NULL, _1, "__construct", NULL, 0, _2);
+		ZEPHIR_INIT_VAR(_1$$3);
+		object_init_ex(_1$$3, zephir_get_internal_ce(SS("swoole_client") TSRMLS_CC));
+		ZEPHIR_INIT_VAR(_2$$3);
+		ZVAL_LONG(_2$$3, 1);
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 0, _2$$3);
 		zephir_check_call_status();
-		zephir_update_property_this(this_ptr, SL("instance"), _1 TSRMLS_CC);
-		_3 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
-		_5 = zephir_fetch_nproperty_this(this_ptr, SL("host"), PH_NOISY_CC);
-		_6 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);
-		ZEPHIR_INIT_NVAR(_2);
-		ZVAL_LONG(_2, -1);
-		ZEPHIR_CALL_METHOD(&_4, _3, "connect", NULL, 0, _5, _6, _2);
+		zephir_update_property_this(this_ptr, SL("instance"), _1$$3 TSRMLS_CC);
+		_3$$3 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
+		_5$$3 = zephir_fetch_nproperty_this(this_ptr, SL("host"), PH_NOISY_CC);
+		_6$$3 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);
+		ZEPHIR_INIT_NVAR(_2$$3);
+		ZVAL_LONG(_2$$3, -1);
+		ZEPHIR_CALL_METHOD(&_4$$3, _3$$3, "connect", NULL, 0, _5$$3, _6$$3, _2$$3);
 		zephir_check_call_status();
-		if (!(zephir_is_true(_4))) {
-			ZEPHIR_INIT_NVAR(_2);
-			object_init_ex(_2, dotphp_socketexception_ce);
-			_7 = zephir_fetch_nproperty_this(this_ptr, SL("host"), PH_NOISY_CC);
-			_8 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);
-			_9 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
-			ZEPHIR_OBS_VAR(_10);
-			zephir_read_property(&_10, _9, SL("errCode"), PH_NOISY_CC);
-			ZEPHIR_INIT_VAR(_11);
-			ZEPHIR_CONCAT_SVSVSVS(_11, "连接主机 ", _7, ":", _8, " 失败。(#", _10, ")");
-			ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL, 16, _11);
+		if (!(zephir_is_true(_4$$3))) {
+			ZEPHIR_INIT_VAR(_7$$4);
+			object_init_ex(_7$$4, dotphp_socketexception_ce);
+			_8$$4 = zephir_fetch_nproperty_this(this_ptr, SL("host"), PH_NOISY_CC);
+			_9$$4 = zephir_fetch_nproperty_this(this_ptr, SL("port"), PH_NOISY_CC);
+			_10$$4 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
+			ZEPHIR_OBS_VAR(_11$$4);
+			zephir_read_property(&_11$$4, _10$$4, SL("errCode"), PH_NOISY_CC);
+			ZEPHIR_INIT_VAR(_12$$4);
+			ZEPHIR_CONCAT_SVSVSVS(_12$$4, "连接主机 ", _8$$4, ":", _9$$4, " 失败。(#", _11$$4, ")");
+			ZEPHIR_CALL_METHOD(NULL, _7$$4, "__construct", NULL, 18, _12$$4);
 			zephir_check_call_status();
-			zephir_throw_exception_debug(_2, "dotphp/core/socketclient.zep", 50 TSRMLS_CC);
+			zephir_throw_exception_debug(_7$$4, "dotphp/core/socketclient.zep", 50 TSRMLS_CC);
 			ZEPHIR_MM_RESTORE();
 			return;
 		}
@@ -140,15 +141,15 @@ PHP_METHOD(DotPHP_Core_SocketClient, connect) {
  */
 PHP_METHOD(DotPHP_Core_SocketClient, close) {
 
+	zval *_0, *_1$$3;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *_0, *_1;
 
 	ZEPHIR_MM_GROW();
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 	if (zephir_is_true(_0)) {
-		_1 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
-		ZEPHIR_CALL_METHOD(NULL, _1, "close", NULL, 0);
+		_1$$3 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "close", NULL, 0);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();
@@ -189,7 +190,7 @@ PHP_METHOD(DotPHP_Core_SocketClient, send) {
 PHP_METHOD(DotPHP_Core_SocketClient, recv) {
 
 	zend_bool waitall;
-	zval *size_param = NULL, *waitall_param = NULL, *_0, *_1;
+	zval *size_param = NULL, *waitall_param = NULL, *_0, *_1, *_2;
 	int size, ZEPHIR_LAST_CALL_STATUS;
 
 	ZEPHIR_MM_GROW();
@@ -210,7 +211,13 @@ PHP_METHOD(DotPHP_Core_SocketClient, recv) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("instance"), PH_NOISY_CC);
 	ZEPHIR_INIT_VAR(_1);
 	ZVAL_LONG(_1, size);
-	ZEPHIR_RETURN_CALL_METHOD(_0, "recv", NULL, 0, _1, (waitall ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false)));
+	ZEPHIR_INIT_VAR(_2);
+	if (waitall) {
+		ZVAL_BOOL(_2, 1);
+	} else {
+		ZVAL_BOOL(_2, 0);
+	}
+	ZEPHIR_RETURN_CALL_METHOD(_0, "recv", NULL, 0, _1, _2);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -223,8 +230,8 @@ PHP_METHOD(DotPHP_Core_SocketClient, recv) {
  */
 PHP_METHOD(DotPHP_Core_SocketClient, isConnected) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
 	zval *_0;
+	int ZEPHIR_LAST_CALL_STATUS;
 
 	ZEPHIR_MM_GROW();
 

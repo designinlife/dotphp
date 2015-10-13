@@ -64,7 +64,7 @@ PHP_METHOD(DotPHP_Utils_ArrayUtil, isAssoc) {
 	ZVAL_LONG(&_0, 0);
 	ZEPHIR_SINIT_VAR(_1);
 	ZVAL_LONG(&_1, (zephir_fast_count_int(arr TSRMLS_CC) - 1));
-	ZEPHIR_CALL_FUNCTION(&r, "range", NULL, 21, &_0, &_1);
+	ZEPHIR_CALL_FUNCTION(&r, "range", NULL, 23, &_0, &_1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(_2);
 	if (reusingKeys) {

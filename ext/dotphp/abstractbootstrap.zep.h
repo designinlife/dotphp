@@ -4,6 +4,7 @@ extern zend_class_entry *dotphp_abstractbootstrap_ce;
 ZEPHIR_INIT_CLASS(DotPHP_AbstractBootstrap);
 
 PHP_METHOD(DotPHP_AbstractBootstrap, dispatch);
+PHP_METHOD(DotPHP_AbstractBootstrap, loadComponents);
 PHP_METHOD(DotPHP_AbstractBootstrap, initialize);
 PHP_METHOD(DotPHP_AbstractBootstrap, initializeComplete);
 PHP_METHOD(DotPHP_AbstractBootstrap, route);
@@ -16,7 +17,10 @@ PHP_METHOD(DotPHP_AbstractBootstrap, defExceptionHandler);
 PHP_METHOD(DotPHP_AbstractBootstrap, defErrorHandler);
 PHP_METHOD(DotPHP_AbstractBootstrap, getDb);
 PHP_METHOD(DotPHP_AbstractBootstrap, getLogger);
+PHP_METHOD(DotPHP_AbstractBootstrap, getCache);
+PHP_METHOD(DotPHP_AbstractBootstrap, getRouteMessage);
 PHP_METHOD(DotPHP_AbstractBootstrap, isCliMode);
+PHP_METHOD(DotPHP_AbstractBootstrap, getAppSettings);
 PHP_METHOD(DotPHP_AbstractBootstrap, getTimezone);
 PHP_METHOD(DotPHP_AbstractBootstrap, setTimezone);
 PHP_METHOD(DotPHP_AbstractBootstrap, getTimeOffset);
@@ -26,6 +30,8 @@ PHP_METHOD(DotPHP_AbstractBootstrap, setErrorLevel);
 PHP_METHOD(DotPHP_AbstractBootstrap, getControllerNS);
 PHP_METHOD(DotPHP_AbstractBootstrap, setControllerNS);
 PHP_METHOD(DotPHP_AbstractBootstrap, setDbParameter);
+PHP_METHOD(DotPHP_AbstractBootstrap, setCacheParameter);
+PHP_METHOD(DotPHP_AbstractBootstrap, setRouteParser);
 PHP_METHOD(DotPHP_AbstractBootstrap, getLogDirectory);
 PHP_METHOD(DotPHP_AbstractBootstrap, setLogDirectory);
 PHP_METHOD(DotPHP_AbstractBootstrap, getLogLevel);
@@ -36,13 +42,13 @@ PHP_METHOD(DotPHP_AbstractBootstrap, getLogModule);
 PHP_METHOD(DotPHP_AbstractBootstrap, setLogModule);
 PHP_METHOD(DotPHP_AbstractBootstrap, getVersion);
 PHP_METHOD(DotPHP_AbstractBootstrap, isDebug);
-PHP_METHOD(DotPHP_AbstractBootstrap, debug);
 PHP_METHOD(DotPHP_AbstractBootstrap, dump);
 PHP_METHOD(DotPHP_AbstractBootstrap, cts);
 PHP_METHOD(DotPHP_AbstractBootstrap, setup);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_dispatch, 0, 0, 0)
 	ZEND_ARG_ARRAY_INFO(0, argv, 1)
+	ZEND_ARG_ARRAY_INFO(0, cfgs, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_execute, 0, 0, 1)
@@ -80,6 +86,14 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_setdbparameter, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, db_parameter, DotPHP\\Bean\\DbParameter, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_setcacheparameter, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, cache_parameter, DotPHP\\Bean\\CacheParameter, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_setrouteparser, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, parser, DotPHP\\Interfaces\\IRouteParser, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_setlogdirectory, 0, 0, 1)
 	ZEND_ARG_INFO(0, log_dir)
 ZEND_END_ARG_INFO()
@@ -96,16 +110,13 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_setlogmodule, 0, 0, 1)
 	ZEND_ARG_INFO(0, module)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_debug, 0, 0, 1)
-	ZEND_ARG_INFO(0, debug)
-ZEND_END_ARG_INFO()
-
 ZEND_BEGIN_ARG_INFO_EX(arginfo_dotphp_abstractbootstrap_dump, 0, 0, 1)
 	ZEND_ARG_INFO(0, data)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, dispatch, arginfo_dotphp_abstractbootstrap_dispatch, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, loadComponents, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, initialize, NULL, ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_AbstractBootstrap, initializeComplete, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
 	PHP_ME(DotPHP_AbstractBootstrap, route, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_PROTECTED)
@@ -118,7 +129,10 @@ ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, defErrorHandler, arginfo_dotphp_abstractbootstrap_deferrorhandler, ZEND_ACC_FINAL|ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getDb, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getLogger, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, getCache, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, getRouteMessage, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, isCliMode, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, getAppSettings, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getTimezone, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setTimezone, arginfo_dotphp_abstractbootstrap_settimezone, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getTimeOffset, NULL, ZEND_ACC_PUBLIC)
@@ -128,6 +142,8 @@ ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, getControllerNS, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setControllerNS, arginfo_dotphp_abstractbootstrap_setcontrollerns, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setDbParameter, arginfo_dotphp_abstractbootstrap_setdbparameter, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, setCacheParameter, arginfo_dotphp_abstractbootstrap_setcacheparameter, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, setRouteParser, arginfo_dotphp_abstractbootstrap_setrouteparser, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getLogDirectory, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setLogDirectory, arginfo_dotphp_abstractbootstrap_setlogdirectory, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getLogLevel, NULL, ZEND_ACC_PUBLIC)
@@ -138,7 +154,6 @@ ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, setLogModule, arginfo_dotphp_abstractbootstrap_setlogmodule, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getVersion, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, isDebug, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(DotPHP_AbstractBootstrap, debug, arginfo_dotphp_abstractbootstrap_debug, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, dump, arginfo_dotphp_abstractbootstrap_dump, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, cts, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setup, NULL, ZEND_ACC_FINAL|ZEND_ACC_PROTECTED)

@@ -9,7 +9,14 @@ namespace DotPHP;
  * @copyright (c) 2015-2016, Lei Lee
  * -------------------------------------------------
  */
-class SwooleBootstrap extends \DotPHP\AbstractBootstrap {
+abstract class SwooleBootstrap extends \DotPHP\AbstractBootstrap {
+    /**
+     * 设置主机地址。
+     * 
+     * @var string
+     */
+    private host = "0.0.0.0";
+
     /**
      * 模板目录。
      * 
@@ -73,6 +80,7 @@ class SwooleBootstrap extends \DotPHP\AbstractBootstrap {
         }
 
         let this->serv = swoole_server_create("0.0.0.0", this->port, SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
+
         this->serv->set(this->server_options);
         this->serv->on("start",        [this->event_dispatcher, "onStart"]);
         this->serv->on("shutdown",     [this->event_dispatcher, "onShutdown"]);
@@ -88,6 +96,27 @@ class SwooleBootstrap extends \DotPHP\AbstractBootstrap {
         this->serv->on("close",        [this->event_dispatcher, "onClose"]);
         this->serv->on("receive",      [this->event_dispatcher, "onReceive"]);
         this->serv->start();
+    }
+
+    /**
+     * 获取服务监听地址。
+     * 
+     * @return string
+     */
+    public function getHost() -> string {
+        return this->host;
+    }
+
+    /**
+     * 设置服务监听地址。
+     * 
+     * @param string host
+     * @return \DotPHP\SwooleBootstrap
+     */
+    public function setHost(string host) -> <\DotPHP\SwooleBootstrap> {
+        let this->host = host;
+
+        return this;
     }
 
     /**

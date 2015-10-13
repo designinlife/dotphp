@@ -40,21 +40,21 @@ ZEPHIR_DOC_METHOD(DotPHP_Interfaces_IDb, set);
 /**
  * 开启事务。
  * 
- * @return void
+ * @return boolean
  */
 ZEPHIR_DOC_METHOD(DotPHP_Interfaces_IDb, begin);
 
 /**
  * 提交事务。
  * 
- * @return void
+ * @return boolean
  */
 ZEPHIR_DOC_METHOD(DotPHP_Interfaces_IDb, commit);
 
 /**
  * 回滚事务。
  * 
- * @return void
+ * @return boolean
  */
 ZEPHIR_DOC_METHOD(DotPHP_Interfaces_IDb, rollback);
 

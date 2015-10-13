@@ -93,6 +93,7 @@ PHP_METHOD(DotPHP_DbException, __construct) {
  */
 PHP_METHOD(DotPHP_DbException, getSql) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "sql");
 

@@ -53,11 +53,23 @@
     },
     "namespace": "dotphp",
     "name": "DotPHP",
-    "description": "DotPHP - A simple PHP development framework.",
+    "description": "A simple PHP framework for TCP Socket / Web / CLI environment for rapid development.",
     "author": "Lei Lee",
-    "version": "0.1a build 3",
+    "version": "0.1.2 alpha",
     "verbose": true,
     "requires": {
-        "extensions": ["amf3", "json", "msgpack", "igbinary"]
+        "extensions": ["json", "msgpack", "igbinary", "swoole", "redis"]
+    },
+    "globals": {
+        "debug": {
+            "type": "bool",
+            "default": true
+        }
+    },
+    "ini-entries": {
+        "available-operators": {
+            "type": "bool",
+            "permission": "all"
+        }
     }
 }

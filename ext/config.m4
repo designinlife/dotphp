@@ -13,16 +13,21 @@ if test "$PHP_DOTPHP" = "yes"; then
 	dotphp/base/dotbase.zep.c
 	dotphp/abstractbootstrap.zep.c
 	dotphp/interfaces/icontroller.zep.c
+	dotphp/base/processbase.zep.c
+	dotphp/bean/abstractresponsemessage.zep.c
 	dotphp/interfaces/idb.zep.c
 	dotphp/interfaces/iencoder.zep.c
 	dotphp/interfaces/ilogger.zep.c
 	dotphp/interfaces/iswooleeventdispatcher.zep.c
 	dotphp/argumentexception.zep.c
+	dotphp/base/multiprocessbase.zep.c
 	dotphp/base/swoolebase.zep.c
 	dotphp/base/webcontrollerbase.zep.c
-	dotphp/bean/abstractresponsemessage.zep.c
+	dotphp/bean/cacheparameter.zep.c
 	dotphp/bean/dbparameter.zep.c
+	dotphp/bean/responsemessage.zep.c
 	dotphp/bean/routemessage.zep.c
+	dotphp/clibootstrap.zep.c
 	dotphp/configurationexception.zep.c
 	dotphp/core/genericlogger.zep.c
 	dotphp/core/socketclient.zep.c
@@ -31,7 +36,10 @@ if test "$PHP_DOTPHP" = "yes"; then
 	dotphp/db/dbpdo.zep.c
 	dotphp/dbexception.zep.c
 	dotphp/dot.zep.c
+	dotphp/filenotfoundexception.zep.c
 	dotphp/httpexception.zep.c
+	dotphp/interfaces/iprocess.zep.c
+	dotphp/interfaces/irouteparser.zep.c
 	dotphp/interfaces/itemplate.zep.c
 	dotphp/notimplementedexception.zep.c
 	dotphp/parseexception.zep.c

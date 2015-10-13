@@ -46,7 +46,7 @@ ZEPHIR_INIT_CLASS(DotPHP_Utils_Probability) {
  */
 PHP_METHOD(DotPHP_Utils_Probability, hit) {
 
-	int r, v;
+	int r = 0, v = 0;
 	zend_bool _0;
 	zval *rate_param = NULL, _1, _2;
 	double rate;
@@ -90,7 +90,7 @@ PHP_METHOD(DotPHP_Utils_Probability, lottery) {
 	HashTable *_1;
 	HashPosition _0;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *ratios_param = NULL, *result = NULL, *key = NULL, *proCur = NULL, *proSum = NULL, *randNum = NULL, **_2, _3 = zval_used_for_init;
+	zval *ratios_param = NULL, *result = NULL, *key = NULL, *proCur = NULL, *proSum = NULL, *randNum = NULL, **_2, _3$$3 = zval_used_for_init;
 	zval *ratios = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -101,7 +101,7 @@ PHP_METHOD(DotPHP_Utils_Probability, lottery) {
 
 	ZEPHIR_INIT_VAR(result);
 	ZVAL_BOOL(result, 0);
-	ZEPHIR_CALL_FUNCTION(&proSum, "array_sum", NULL, 29, ratios);
+	ZEPHIR_CALL_FUNCTION(&proSum, "array_sum", NULL, 31, ratios);
 	zephir_check_call_status();
 	zephir_is_iterable(ratios, &_1, &_0, 0, 0, "dotphp/utils/probability.zep", 64);
 	for (
@@ -110,10 +110,10 @@ PHP_METHOD(DotPHP_Utils_Probability, lottery) {
 	) {
 		ZEPHIR_GET_HMKEY(key, _1, _0);
 		ZEPHIR_GET_HVALUE(proCur, _2);
-		ZEPHIR_SINIT_NVAR(_3);
-		ZVAL_LONG(&_3, 1);
+		ZEPHIR_SINIT_NVAR(_3$$3);
+		ZVAL_LONG(&_3$$3, 1);
 		ZEPHIR_INIT_NVAR(randNum);
-		ZVAL_LONG(randNum, zephir_mt_rand(zephir_get_intval(&_3), zephir_get_intval(proSum) TSRMLS_CC));
+		ZVAL_LONG(randNum, zephir_mt_rand(zephir_get_intval(&_3$$3), zephir_get_intval(proSum) TSRMLS_CC));
 		if (ZEPHIR_LE(randNum, proCur)) {
 			ZEPHIR_CPY_WRT(result, key);
 			break;

@@ -32,6 +32,13 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
     private dbo = null;
 
     /**
+     * 事务计数。
+     * 
+     * @var int
+     */
+    private transactions = 0;
+
+    /**
      * 构造函数。
      * 
      * @param \DotPHP\AbstractBootstrap bootstrap
@@ -62,9 +69,9 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
     /**
      * 开启事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function begin() -> void {
+    public function begin() -> boolean {
         if !this->is_connected {
             this->connect();
         }
@@ -73,33 +80,61 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
             throw new \DotPHP\DbException("检测到无效的 PDO 实例对象。");
         }
 
-        this->dbo->exec("BEGIN");
+        let this->transactions++;
+
+        if this->transactions == 1 {
+            this->dbo->exec("BEGIN");
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * 提交事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function commit() -> void {
+    public function commit() -> boolean {
         if !this->dbo {
             throw new \DotPHP\DbException("检测到无效的 PDO 实例对象。");
         }
 
-        this->dbo->exec("COMMIT");
+        if this->transactions == 1 {
+            this->dbo->exec("COMMIT");
+
+            let this->transactions--;
+
+            return true;
+        } else {
+            let this->transactions--;
+        }
+
+        return false;
     }
 
     /**
      * 回滚事务。
      * 
-     * @return void
+     * @return boolean
      */
-    public function rollback() -> void {
+    public function rollback() -> boolean {
         if !this->dbo {
             throw new \DotPHP\DbException("检测到无效的 PDO 实例对象。");
         }
 
-        this->dbo->exec("ROLLBACK");
+        if this->transactions == 1 {
+            let this->transactions = 0;
+
+            this->dbo->exec("ROLLBACK");
+
+            return true;
+        } else {
+            let this->transactions--;
+        }
+
+        return false;
     }
 
     /**

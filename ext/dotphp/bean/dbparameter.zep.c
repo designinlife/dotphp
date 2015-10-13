@@ -107,6 +107,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, __construct) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getHost) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "host");
 
@@ -116,7 +117,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getHost) {
  * 设置主机地址。
  * 
  * @param string host
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setHost) {
 
@@ -141,6 +142,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setHost) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getPort) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "port");
 
@@ -150,7 +152,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getPort) {
  * 设置端口。
  * 
  * @param int port
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setPort) {
 
@@ -175,6 +177,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setPort) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getUser) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "user");
 
@@ -184,7 +187,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getUser) {
  * 设置登录帐号。
  * 
  * @param string user
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setUser) {
 
@@ -209,6 +212,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setUser) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getPass) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "passwd");
 
@@ -218,7 +222,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getPass) {
  * 设置密码。
  * 
  * @param string passwd
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setPass) {
 
@@ -243,6 +247,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setPass) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getDb) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "db");
 
@@ -252,7 +257,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getDb) {
  * 设置数据库名称。
  * 
  * @param string db
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setDb) {
 
@@ -277,6 +282,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setDb) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getCharset) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "charset");
 
@@ -286,7 +292,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getCharset) {
  * 设置字符集。
  * 
  * @param string charset
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setCharset) {
 
@@ -311,6 +317,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, setCharset) {
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, getUnixSocket) {
 
+	
 
 	RETURN_MEMBER(this_ptr, "unix_socket");
 
@@ -320,7 +327,7 @@ PHP_METHOD(DotPHP_Bean_DbParameter, getUnixSocket) {
  * 设置 UNIX 套接字地址。
  * 
  * @param string unix_socket
- * @return <\DotPHP\Bean\DbParameter>
+ * @return \DotPHP\Bean\DbParameter
  */
 PHP_METHOD(DotPHP_Bean_DbParameter, setUnixSocket) {
 

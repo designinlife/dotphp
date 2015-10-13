@@ -91,7 +91,7 @@ PHP_METHOD(DotPHP_Dot, setup) {
 
 	zephir_fcall_cache_entry *_4 = NULL;
 	int error_level, ZEPHIR_LAST_CALL_STATUS;
-	zval *sys_root_dir_param = NULL, *class_auto_handler = NULL, *error_level_param = NULL, *_0, _1, *_2, _3 = zval_used_for_init;
+	zval *sys_root_dir_param = NULL, *class_auto_handler = NULL, *error_level_param = NULL, *_0, _1, *_2, _3, _5$$4;
 	zval *sys_root_dir = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -117,15 +117,15 @@ PHP_METHOD(DotPHP_Dot, setup) {
 	zephir_update_static_property_ce(dotphp_dot_ce, SL("sys_root"), &_2 TSRMLS_CC);
 	ZEPHIR_SINIT_VAR(_3);
 	ZVAL_LONG(&_3, error_level);
-	ZEPHIR_CALL_FUNCTION(NULL, "error_reporting", NULL, 18, &_3);
+	ZEPHIR_CALL_FUNCTION(NULL, "error_reporting", NULL, 20, &_3);
 	zephir_check_call_status();
 	if (zephir_is_callable(class_auto_handler TSRMLS_CC) == 1) {
-		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 19, class_auto_handler);
+		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 21, class_auto_handler);
 		zephir_check_call_status();
 	} else {
-		ZEPHIR_SINIT_NVAR(_3);
-		ZVAL_STRING(&_3, "\\DotPHP\\Dot::def_class_auto_handler", 0);
-		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 19, &_3);
+		ZEPHIR_SINIT_VAR(_5$$4);
+		ZVAL_STRING(&_5$$4, "\\DotPHP\\Dot::def_class_auto_handler", 0);
+		ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", &_4, 21, &_5$$4);
 		zephir_check_call_status();
 	}
 	ZEPHIR_MM_RESTORE();
@@ -155,7 +155,7 @@ PHP_METHOD(DotPHP_Dot, getRootDirectory) {
  */
 PHP_METHOD(DotPHP_Dot, def_class_auto_handler) {
 
-	zval *class_name_param = NULL, *file = NULL, _0, *_1, _2, *_3, *_4 = NULL, *_5 = NULL, *_6, _7 = zval_used_for_init, _8 = zval_used_for_init, _9, _10;
+	zval *class_name_param = NULL, *file = NULL, _0, *_1, _2, *_3, *_4$$3, *_5$$3, *_6$$3, _7$$3, _8$$3, _9$$3, _10$$3, *_11$$4, *_12$$4, _13$$4, _14$$4, *_15$$5, *_16$$5, _17$$5, _18$$5;
 	zval *class_name = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -173,44 +173,44 @@ PHP_METHOD(DotPHP_Dot, def_class_auto_handler) {
 	ZEPHIR_INIT_VAR(_3);
 	zephir_fast_strpos(_3, class_name, &_2, 0 );
 	if (ZEPHIR_IS_LONG_IDENTICAL(_1, 0)) {
-		ZEPHIR_OBS_VAR(_4);
-		zephir_read_static_property_ce(&_4, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
-		ZEPHIR_INIT_VAR(_5);
-		ZEPHIR_INIT_VAR(_6);
-		ZEPHIR_SINIT_VAR(_7);
-		ZVAL_STRING(&_7, "_", 0);
-		ZEPHIR_SINIT_VAR(_8);
-		ZVAL_STRING(&_8, "/", 0);
-		zephir_fast_str_replace(&_6, &_7, &_8, class_name TSRMLS_CC);
-		ZEPHIR_SINIT_VAR(_9);
-		ZVAL_STRING(&_9, "\\0", 0);
-		ZEPHIR_SINIT_VAR(_10);
-		ZVAL_STRING(&_10, "", 0);
-		zephir_fast_str_replace(&_5, &_9, &_10, _6 TSRMLS_CC);
+		ZEPHIR_OBS_VAR(_4$$3);
+		zephir_read_static_property_ce(&_4$$3, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
+		ZEPHIR_INIT_VAR(_5$$3);
+		ZEPHIR_INIT_VAR(_6$$3);
+		ZEPHIR_SINIT_VAR(_7$$3);
+		ZVAL_STRING(&_7$$3, "_", 0);
+		ZEPHIR_SINIT_VAR(_8$$3);
+		ZVAL_STRING(&_8$$3, "/", 0);
+		zephir_fast_str_replace(&_6$$3, &_7$$3, &_8$$3, class_name TSRMLS_CC);
+		ZEPHIR_SINIT_VAR(_9$$3);
+		ZVAL_STRING(&_9$$3, "\\0", 0);
+		ZEPHIR_SINIT_VAR(_10$$3);
+		ZVAL_STRING(&_10$$3, "", 0);
+		zephir_fast_str_replace(&_5$$3, &_9$$3, &_10$$3, _6$$3 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(file);
-		ZEPHIR_CONCAT_VSSVS(file, _4, "libs", "/", _5, ".php");
+		ZEPHIR_CONCAT_VSSVS(file, _4$$3, "libs", "/", _5$$3, ".php");
 	} else if (ZEPHIR_IS_LONG_IDENTICAL(_3, 0)) {
-		ZEPHIR_OBS_NVAR(_4);
-		zephir_read_static_property_ce(&_4, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
-		ZEPHIR_INIT_NVAR(_5);
-		ZEPHIR_SINIT_NVAR(_7);
-		ZVAL_STRING(&_7, "\\", 0);
-		ZEPHIR_SINIT_NVAR(_8);
-		ZVAL_STRING(&_8, "/", 0);
-		zephir_fast_str_replace(&_5, &_7, &_8, class_name TSRMLS_CC);
+		ZEPHIR_OBS_VAR(_11$$4);
+		zephir_read_static_property_ce(&_11$$4, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
+		ZEPHIR_INIT_VAR(_12$$4);
+		ZEPHIR_SINIT_VAR(_13$$4);
+		ZVAL_STRING(&_13$$4, "\\", 0);
+		ZEPHIR_SINIT_VAR(_14$$4);
+		ZVAL_STRING(&_14$$4, "/", 0);
+		zephir_fast_str_replace(&_12$$4, &_13$$4, &_14$$4, class_name TSRMLS_CC);
 		ZEPHIR_INIT_NVAR(file);
-		ZEPHIR_CONCAT_VVS(file, _4, _5, ".php");
+		ZEPHIR_CONCAT_VVS(file, _11$$4, _12$$4, ".php");
 	} else {
-		ZEPHIR_OBS_NVAR(_4);
-		zephir_read_static_property_ce(&_4, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
-		ZEPHIR_INIT_NVAR(_5);
-		ZEPHIR_SINIT_NVAR(_7);
-		ZVAL_STRING(&_7, "\\", 0);
-		ZEPHIR_SINIT_NVAR(_8);
-		ZVAL_STRING(&_8, "/", 0);
-		zephir_fast_str_replace(&_5, &_7, &_8, class_name TSRMLS_CC);
+		ZEPHIR_OBS_VAR(_15$$5);
+		zephir_read_static_property_ce(&_15$$5, dotphp_dot_ce, SL("sys_root") TSRMLS_CC);
+		ZEPHIR_INIT_VAR(_16$$5);
+		ZEPHIR_SINIT_VAR(_17$$5);
+		ZVAL_STRING(&_17$$5, "\\", 0);
+		ZEPHIR_SINIT_VAR(_18$$5);
+		ZVAL_STRING(&_18$$5, "/", 0);
+		zephir_fast_str_replace(&_16$$5, &_17$$5, &_18$$5, class_name TSRMLS_CC);
 		ZEPHIR_INIT_NVAR(file);
-		ZEPHIR_CONCAT_VSSVS(file, _4, "libs", "/", _5, ".php");
+		ZEPHIR_CONCAT_VSSVS(file, _15$$5, "libs", "/", _16$$5, ".php");
 	}
 	if (zephir_require_zval(file TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();

@@ -26,6 +26,8 @@ abstract class AbstractResponseMessage {
 
     protected _trace = null;
 
+    protected _delimiter = "\r\r";
+
     /**
      * 获取错误代码。
      * 
@@ -169,6 +171,27 @@ abstract class AbstractResponseMessage {
      */
     public function setOpCode(int op_code) -> <\DotPHP\Bean\AbstractResponseMessage> {
         let this->_op_code = op_code;
+
+        return this;
+    }
+
+    /**
+     * 获取消息分隔符。
+     * 
+     * @return int
+     */
+    public function getDelimiter() -> string {
+        return this->_delimiter;
+    }
+
+    /**
+     * 设置消息分隔符。
+     * 
+     * @param string delimiter
+     * @return \DotPHP\Bean\AbstractResponseMessage
+     */
+    public function setDelimiter(string delimiter) -> <\DotPHP\Bean\AbstractResponseMessage> {
+        let this->_delimiter = delimiter;
 
         return this;
     }

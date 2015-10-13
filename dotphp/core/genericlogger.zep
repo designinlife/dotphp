@@ -165,7 +165,7 @@ class GenericLogger extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\I
 
         let date_str     = date("Ymd");
         let file_pattern = "%d.%m.log";
-        let msg_pattern  = "%d %l [#%p] %m%n";
+        let msg_pattern  = "%d [%l][#%p] %m%n";
 
         let t     = microtime(true);
         let micro = sprintf("%03d", (t - floor(t)) * 1000);

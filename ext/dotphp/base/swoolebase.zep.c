@@ -50,7 +50,7 @@ PHP_METHOD(DotPHP_Base_SwooleBase, __construct) {
 
 
 
-	ZEPHIR_CALL_PARENT(NULL, dotphp_base_swoolebase_ce, this_ptr, "__construct", &_0, 4, bootstrap);
+	ZEPHIR_CALL_PARENT(NULL, dotphp_base_swoolebase_ce, this_ptr, "__construct", &_0, 10, bootstrap);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -63,6 +63,7 @@ PHP_METHOD(DotPHP_Base_SwooleBase, __construct) {
  */
 PHP_METHOD(DotPHP_Base_SwooleBase, initialize) {
 
+	
 
 
 }
@@ -74,6 +75,7 @@ PHP_METHOD(DotPHP_Base_SwooleBase, initialize) {
  */
 PHP_METHOD(DotPHP_Base_SwooleBase, before) {
 
+	
 
 
 }
@@ -85,6 +87,7 @@ PHP_METHOD(DotPHP_Base_SwooleBase, before) {
  */
 PHP_METHOD(DotPHP_Base_SwooleBase, after) {
 
+	
 
 
 }

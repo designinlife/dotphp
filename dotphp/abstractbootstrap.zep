@@ -39,13 +39,6 @@ abstract class AbstractBootstrap {
     private time_offset = 0;
 
     /**
-     * 是否开启调试模式？
-     * 
-     * @var boolean
-     */
-    private _debug = false;
-
-    /**
      * 是否命令行模式运行？
      * 
      * @var boolean
@@ -58,6 +51,34 @@ abstract class AbstractBootstrap {
      * @var \DotPHP\Bean\DbParameter
      */
     private db_parameter = null;
+
+    /**
+     * 缓存参数对象。
+     * 
+     * @var \DotPHP\Bean\CacheParameter
+     */
+    private cache_parameter = null;
+
+    /**
+     * 路由解析器对象。
+     * 
+     * @var \DotPHP\Interfaces\IRouteParser
+     */
+    protected route_parser = null;
+
+    /**
+     * 路由消息对象。
+     * 
+     * @var \DotPHP\Bean\RouteMessage
+     */
+    protected route_message = null;
+
+    /**
+     * 是否开启调试模式？
+     * 
+     * @var boolean
+     */
+    protected _debug = false;
 
     /**
      * 控制器命名空间。
@@ -109,11 +130,25 @@ abstract class AbstractBootstrap {
     protected logger = null;
 
     /**
+     * Redis 缓存对象。
+     * 
+     * @var \Redis
+     */
+    protected cache = null;
+
+    /**
      * 命令行参数列表。
      * 
      * @var array
      */
-    public argv = null;
+    protected argv = null;
+
+    /**
+     * 配置参数列表。
+     * 
+     * @var array
+     */
+    protected cfgs = null;
 
     /**
      * 启动程序。
@@ -121,25 +156,50 @@ abstract class AbstractBootstrap {
      * @param array argv
      * @return void
      */
-    public function dispatch(array argv = null) -> void {
+    public function dispatch(array argv = null, array cfgs = null) -> void {
         if 0 === strcmp("cli", PHP_SAPI) {
             let this->is_cli_mode = true;
         }
 
+        let this->_debug = globals_get("debug"); // 检测 DEBUG 模式
+
         let this->argv = argv;
+        let this->cfgs = cfgs;
 
-        var objMsgRoute = null;
+        this->setup();                           // 安装系统环境设置
+        this->initialize();                      // 初始化事件
+        this->initializeComplete();              // 初始化完成事件
 
-        this->setup();                   // 安装系统环境设置
-        this->initialize();              // 初始化事件
-        this->initializeComplete();      // 初始化完成事件
-
-        let objMsgRoute = this->route(); // 解析路由并返回路由结果对象
+        let this->route_message = this->route(); // 解析路由并返回路由结果对象
         
-        this->validate();                // 验证请求合法性
-        this->before();                  // before 事件
-        this->execute(objMsgRoute);      // 执行控制器方法
-        this->after();                   // after 事件
+        this->validate();                        // 验证请求合法性
+        this->before();                          // before 事件
+        this->execute(this->route_message);      // 执行控制器方法
+        this->after();                           // after 事件
+    }
+
+    /**
+     * 载入系统核心组件。
+     * 
+     * @return void
+     */
+    public function loadComponents() -> void {
+        let this->db    = new \DotPHP\DB\DbPdo(this);
+        let this->cache = new \Redis();
+
+        if !empty this->cache_parameter {
+            if !empty this->cache_parameter->getUnixSocket() {
+                this->cache->connect(this->cache_parameter->getUnixSocket());
+            } else {
+                this->cache->connect(this->cache_parameter->getHost(), this->cache_parameter->getPort(), 1, null, 100);
+            }
+            // Redis 密码验证检测
+            if this->cache && !empty this->cache_parameter->getPass() {
+                this->cache->auth(this->cache_parameter->getPass());
+            }
+        }
+
+        this->db->set(this->db_parameter);
     }
 
     /**
@@ -148,16 +208,9 @@ abstract class AbstractBootstrap {
      * @return void
      */
     protected function initialize() -> void {
-        // 初始化必需的 IDb/ILogger 实例对象 ...
-        // -----------------------------------------------------
-        let this->db     = new \DotPHP\DB\DbPdo(this);
-        let this->logger = new \DotPHP\Core\GenericLogger(this);
-
-        this->logger->setModule(this->log_module)
-                    ->setMode(this->log_mode)
-                    ->setLevel(this->log_level);
-
-        this->db->set(this->db_parameter);
+        // 缺省载入系统核心组件 ...
+        // ----------------------------------
+        this->loadComponents();
     }
 
     /**
@@ -208,7 +261,14 @@ abstract class AbstractBootstrap {
      * 
      * @return void
      */
-    public function shutdown() -> void {}
+    public function shutdown() -> void {
+        if this->db {
+            this->db->close();
+            let this->db = null;
+        }
+        let this->cache  = null;
+        let this->logger = null;
+    }
 
     /**
      * 缺省异常处理。
@@ -252,12 +312,39 @@ abstract class AbstractBootstrap {
     }
 
     /**
+     * 获取 Redis 对象。
+     * 
+     * @return \Redis
+     */
+    public function getCache() -> <\Redis> {
+        return this->cache;
+    }
+
+    /**
+     * 获取 RouteMessage 对象。
+     * 
+     * @return \DotPHP\Bean\RouteMessage
+     */
+    public function getRouteMessage() -> <\DotPHP\Bean\RouteMessage> {
+        return this->route_message;
+    }
+
+    /**
      * 指示是否命令行运行模式？
      * 
      * @return boolean
      */
     public function isCliMode() -> boolean {
         return this->is_cli_mode;
+    }
+
+    /**
+     * 获取系统配置参数列表。
+     * 
+     * @return array
+     */
+    public function getAppSettings() -> array {
+        return this->cfgs;
     }
 
     /**
@@ -352,6 +439,30 @@ abstract class AbstractBootstrap {
      */
     public function setDbParameter(<\DotPHP\Bean\DbParameter> db_parameter) -> <\DotPHP\AbstractBootstrap> {
         let this->db_parameter = db_parameter;
+
+        return this;
+    }
+
+    /**
+     * 设置 Redis 连接参数对象。
+     * 
+     * @param \DotPHP\Bean\CacheParameter cache_parameter
+     * @return \DotPHP\AbstractBootstrap
+     */
+    public function setCacheParameter(<\DotPHP\Bean\CacheParameter> cache_parameter) -> <\DotPHP\AbstractBootstrap> {
+        let this->cache_parameter = cache_parameter;
+
+        return this;
+    }
+
+    /**
+     * 设置路由解析器对象。
+     * 
+     * @param \DotPHP\Interfaces\IRouteParser parser
+     * @return \DotPHP\AbstractBootstrap
+     */
+    public function setRouteParser(<\DotPHP\Interfaces\IRouteParser> parser) -> <\DotPHP\AbstractBootstrap> {
+        let this->route_parser = parser;
 
         return this;
     }
@@ -459,18 +570,6 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     * 设置调试模式开关。
-     * 
-     * @param boolean debug
-     * @return \DotPHP\AbstractBootstrap
-     */
-    public function debug(boolean debug) -> <\DotPHP\AbstractBootstrap> {
-        let this->_debug = debug;
-
-        return this;
-    }
-
-    /**
      * 打印数据。
      * 
      * @param mixed data
@@ -510,5 +609,11 @@ abstract class AbstractBootstrap {
         // 注册异常处理回调方法.
         set_exception_handler([this, "defExceptionHandler"]);
         set_error_handler([this, "defErrorHandler"], this->error_level);
+
+        // 实例化日志组件
+        let this->logger = new \DotPHP\Core\GenericLogger(this);
+        this->logger->setModule(this->log_module)
+                    ->setMode(this->log_mode)
+                    ->setLevel(this->log_level);
     }
 }

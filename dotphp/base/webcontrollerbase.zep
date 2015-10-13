@@ -18,6 +18,34 @@ class WebControllerBase extends \DotPHP\Base\DotBase implements \DotPHP\Interfac
     protected _isPostback = false;
 
     /**
+     * ITemplate 模板对象实例。
+     *
+     * @var \DotPHP\Interfaces\ITemplate
+     */
+    protected tpl = null;
+
+    /**
+     * IDb 数据库对象实例。
+     *
+     * @var \DotPHP\Interfaces\IDb
+     */
+    protected db = null;
+
+    /**
+     * ILogger 日志对象实例。
+     *
+     * @var \DotPHP\Interfaces\ILogger
+     */
+    protected logger = null;
+
+    /**
+     * Redis 缓存对象实例。
+     * 
+     * @var \Redis
+     */
+    protected cache = null;
+
+    /**
      * 构造函数。
      * 
      * @param \DotPHP\WebBootstrap bootstrap
@@ -26,6 +54,24 @@ class WebControllerBase extends \DotPHP\Base\DotBase implements \DotPHP\Interfac
         parent::__construct(bootstrap);
 
         let this->_isPostback = 0 === strcmp("POST", _SERVER["REQUEST_METHOD"]) ? true : false;
+        let this->tpl    = bootstrap->getTemplate();
+        let this->db     = bootstrap->getDb();
+        let this->logger = bootstrap->getLogger();
+        let this->cache  = bootstrap->getCache();
+    }
+
+    /**
+     * 析构函数。
+     *
+     * @return void
+     */
+    public function __destruct() {
+        parent::__destruct();
+
+        unset this->tpl;
+        unset this->db;
+        unset this->logger;
+        unset this->cache;
     }
 
     /**

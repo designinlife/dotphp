@@ -44,8 +44,8 @@ ZEPHIR_INIT_CLASS(DotPHP_Utils_Number) {
 PHP_METHOD(DotPHP_Utils_Number, isPrime) {
 
 	zend_bool _2;
-	zval *num_param = NULL, *end, *_0, _1, *_4 = NULL;
-	int num, i, _3;
+	zval *num_param = NULL, *end = NULL, *_0, _1, *_4 = NULL;
+	int num, i = 0, _3;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &num_param);

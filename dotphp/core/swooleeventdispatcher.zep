@@ -45,17 +45,19 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
      *     3).已监听所有 TCP/UDP 端口
      *     4).已监听了 Timer 定时器
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @return void
      */
     public function onStart(serv) -> void {
-        this->bootstrap->logger->info("TCP 服务器已启动。(0.0.0.0:" . this->bootstrap->getPort() . ")");
+        if !empty this->bootstrap->getLogger() {
+            this->bootstrap->getLogger()->info("TCP 服务器已启动。(0.0.0.0:" . this->bootstrap->getPort() . ")");
+        }
     }
 
     /**
      * 服务器关闭事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @return void
      */
     public function onShutdown(serv) -> void {}
@@ -63,7 +65,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 管理进程启动事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @return void
      */
     public function onManagerStart(serv) -> void {}
@@ -79,7 +81,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 工作进程启动事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int worker_id
      * @return void
      */
@@ -88,7 +90,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 工作进程结束事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int worker_id
      * @return void
      */
@@ -97,7 +99,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 工作进程出错事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int worker_id
      * @param int worker_pid
      * @param int exit_code
@@ -108,7 +110,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 定时器事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int interval
      * @return void
      */
@@ -117,7 +119,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 任务事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int task_id
      * @param int from_id
      * @param string data
@@ -128,7 +130,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 任务完成事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int task_id
      * @param string data
      * @return void
@@ -138,7 +140,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 客户端连接事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int fd
      * @param int from_id
      * @return void
@@ -148,7 +150,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 客户端断开事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int fd
      * @param int from_id
      * @return void
@@ -158,7 +160,7 @@ abstract class SwooleEventDispatcher implements \DotPHP\Interfaces\ISwooleEventD
     /**
      * 数据接收事件。
      * 
-     * @param swoole_server serv
+     * @param \swoole_server serv
      * @param int fd
      * @param int from_id
      * @param string data
