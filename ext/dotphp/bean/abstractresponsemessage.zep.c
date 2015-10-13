@@ -53,6 +53,26 @@ ZEPHIR_INIT_CLASS(DotPHP_Bean_AbstractResponseMessage) {
 }
 
 /**
+ * 构造函数。
+ * 
+ * @param mixed data
+ */
+PHP_METHOD(DotPHP_Bean_AbstractResponseMessage, __construct) {
+
+	zval *data = NULL;
+
+	zephir_fetch_params(0, 0, 1, &data);
+
+	if (!data) {
+		data = ZEPHIR_GLOBAL(global_null);
+	}
+
+
+	zephir_update_property_this(this_ptr, SL("_data"), data TSRMLS_CC);
+
+}
+
+/**
  * 获取错误代码。
  * 
  * @return int

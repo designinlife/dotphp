@@ -29,6 +29,15 @@ abstract class AbstractResponseMessage {
     protected _delimiter = "\r\r";
 
     /**
+     * 构造函数。
+     * 
+     * @param mixed data
+     */
+    public function __construct(data = null) {
+        let this->_data = data;
+    }
+
+    /**
      * 获取错误代码。
      * 
      * @return int
