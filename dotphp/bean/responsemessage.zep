@@ -18,7 +18,8 @@ class ResponseMessage extends AbstractResponseMessage {
      */
     public function encode() -> string {
         array d;
-        var s;
+        var s, es;
+        int len;
 
         let d = [
             "o": this->_op_code,
@@ -30,10 +31,11 @@ class ResponseMessage extends AbstractResponseMessage {
             "e": this->_errstr
         ];
 
-        let s = \DotPHP\Utils\Encoder::encode(d, \DotPHP\Utils\Encoder::MSGPACK);
-        let s .= this->_delimiter;
+        let s   = \DotPHP\Utils\Encoder::encode(d, \DotPHP\Utils\Encoder::MSGPACK);
+        let len = strlen(s);
+        let es  = pack("cNa*", false, len, s);
 
-        return $s;
+        return es;
     }
 
     /**

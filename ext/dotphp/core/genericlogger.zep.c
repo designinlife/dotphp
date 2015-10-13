@@ -167,7 +167,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, debug) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 500);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -203,7 +203,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, error) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 200);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context, ex);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context, ex);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -235,7 +235,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, fatal) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 100);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -267,7 +267,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, info) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 400);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -299,7 +299,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, trace) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 600);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -331,7 +331,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, warn) {
 
 	ZEPHIR_INIT_VAR(_0);
 	ZVAL_LONG(_0, 300);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 13, _0, msg, context);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_log_write", NULL, 14, _0, msg, context);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -382,7 +382,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, _log_write) {
 	}
 	ZEPHIR_SINIT_VAR(_2);
 	ZVAL_STRING(&_2, "Ymd", 0);
-	ZEPHIR_CALL_FUNCTION(&date_str, "date", &_3, 14, &_2);
+	ZEPHIR_CALL_FUNCTION(&date_str, "date", &_3, 15, &_2);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(file_pattern);
 	ZVAL_STRING(file_pattern, "%d.%m.log", 1);
@@ -394,7 +394,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, _log_write) {
 	ZVAL_STRING(&_2, "%03d", 0);
 	ZEPHIR_SINIT_VAR(_4);
 	ZVAL_DOUBLE(&_4, (((zephir_get_numberval(t) - zephir_floor(t TSRMLS_CC))) * (double) (1000)));
-	ZEPHIR_CALL_FUNCTION(&micro, "sprintf", &_5, 15, &_2, &_4);
+	ZEPHIR_CALL_FUNCTION(&micro, "sprintf", &_5, 16, &_2, &_4);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(reps1);
 	zephir_create_array(reps1, 2, 0 TSRMLS_CC);
@@ -407,17 +407,17 @@ PHP_METHOD(DotPHP_Core_GenericLogger, _log_write) {
 	zephir_create_array(reps2, 5, 0 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(_8);
 	ZEPHIR_CONCAT_SV(_8, "Y-m-d H:i:s,", micro);
-	ZEPHIR_CALL_FUNCTION(&_9, "date", &_3, 14, _8, t);
+	ZEPHIR_CALL_FUNCTION(&_9, "date", &_3, 15, _8, t);
 	zephir_check_call_status();
 	zephir_array_update_string(&reps2, SL("%d"), &_9, PH_COPY | PH_SEPARATE);
 	_10 = zephir_fetch_nproperty_this(this_ptr, SL("_types"), PH_NOISY_CC);
 	zephir_array_fetch_long(&_11, _10, level, PH_NOISY | PH_READONLY, "dotphp/core/genericlogger.zep", 174 TSRMLS_CC);
 	ZEPHIR_SINIT_NVAR(_2);
 	ZVAL_STRING(&_2, "%-5s", 0);
-	ZEPHIR_CALL_FUNCTION(&_9, "sprintf", &_5, 15, &_2, _11);
+	ZEPHIR_CALL_FUNCTION(&_9, "sprintf", &_5, 16, &_2, _11);
 	zephir_check_call_status();
 	zephir_array_update_string(&reps2, SL("%l"), &_9, PH_COPY | PH_SEPARATE);
-	ZEPHIR_CALL_FUNCTION(&_9, "posix_getpid", NULL, 16);
+	ZEPHIR_CALL_FUNCTION(&_9, "posix_getpid", NULL, 17);
 	zephir_check_call_status();
 	zephir_array_update_string(&reps2, SL("%p"), &_9, PH_COPY | PH_SEPARATE);
 	zephir_array_update_string(&reps2, SL("%m"), &msg, PH_COPY | PH_SEPARATE);
@@ -484,7 +484,7 @@ PHP_METHOD(DotPHP_Core_GenericLogger, _log_write) {
 	if (2 == (((int) (zephir_get_numberval(_30)) & 2))) {
 		ZEPHIR_SINIT_VAR(_31$$11);
 		ZVAL_STRING(&_31$$11, "a", 0);
-		ZEPHIR_CALL_FUNCTION(&fp$$11, "fopen", NULL, 17, file, &_31$$11);
+		ZEPHIR_CALL_FUNCTION(&fp$$11, "fopen", NULL, 18, file, &_31$$11);
 		zephir_check_call_status();
 		if (zephir_is_true(fp$$11)) {
 			zephir_fwrite(NULL, fp$$11, msg TSRMLS_CC);

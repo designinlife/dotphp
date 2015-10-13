@@ -17,7 +17,7 @@
 #include "kernel/object.h"
 #include "kernel/time.h"
 #include "kernel/fcall.h"
-#include "kernel/operators.h"
+#include "kernel/string.h"
 
 
 /**
@@ -45,9 +45,9 @@ ZEPHIR_INIT_CLASS(DotPHP_Bean_ResponseMessage) {
  */
 PHP_METHOD(DotPHP_Bean_ResponseMessage, encode) {
 
-	zval *s = NULL, *_0 = NULL, *_1 = NULL, *_3;
+	zval *s = NULL, *es = NULL, *_0 = NULL, *_1 = NULL, _3, _4;
 	zval *d = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	int ZEPHIR_LAST_CALL_STATUS, len = 0;
 	zephir_fcall_cache_entry *_2 = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -79,9 +79,14 @@ PHP_METHOD(DotPHP_Bean_ResponseMessage, encode) {
 	ZVAL_LONG(_1, 2);
 	ZEPHIR_CALL_CE_STATIC(&s, dotphp_utils_encoder_ce, "encode", &_2, 12, d, _1);
 	zephir_check_call_status();
-	_3 = zephir_fetch_nproperty_this(this_ptr, SL("_delimiter"), PH_NOISY_CC);
-	zephir_concat_self(&s, _3 TSRMLS_CC);
-	RETURN_CCTOR(s);
+	len = zephir_fast_strlen_ev(s);
+	ZEPHIR_SINIT_VAR(_3);
+	ZVAL_STRING(&_3, "cNa*", 0);
+	ZEPHIR_SINIT_VAR(_4);
+	ZVAL_LONG(&_4, len);
+	ZEPHIR_CALL_FUNCTION(&es, "pack", NULL, 13, &_3, ZEPHIR_GLOBAL(global_false), &_4, s);
+	zephir_check_call_status();
+	RETURN_CCTOR(es);
 
 }
 

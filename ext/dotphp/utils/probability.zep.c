@@ -101,7 +101,7 @@ PHP_METHOD(DotPHP_Utils_Probability, lottery) {
 
 	ZEPHIR_INIT_VAR(result);
 	ZVAL_BOOL(result, 0);
-	ZEPHIR_CALL_FUNCTION(&proSum, "array_sum", NULL, 31, ratios);
+	ZEPHIR_CALL_FUNCTION(&proSum, "array_sum", NULL, 32, ratios);
 	zephir_check_call_status();
 	zephir_is_iterable(ratios, &_1, &_0, 0, 0, "dotphp/utils/probability.zep", 64);
 	for (

@@ -85,12 +85,12 @@ PHP_METHOD(DotPHP_Utils_Encoder, encode) {
 			RETURN_MM();
 		}
 		if (enc_type == 2) {
-			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 24, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_serialize", NULL, 25, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
 		if (enc_type == 3) {
-			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 25, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_serialize", NULL, 26, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
@@ -130,12 +130,12 @@ PHP_METHOD(DotPHP_Utils_Encoder, decode) {
 			RETURN_MM();
 		}
 		if (enc_type == 2) {
-			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unserialize", NULL, 26, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("msgpack_unserialize", NULL, 27, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
 		if (enc_type == 3) {
-			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_unserialize", NULL, 27, data);
+			ZEPHIR_RETURN_CALL_FUNCTION("igbinary_unserialize", NULL, 28, data);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
