@@ -213,7 +213,7 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
 
             sth->execute();
         } catch \PDOException, e {
-            throw e;
+            throw new \DotPHP\DbException(e->getMessage(), e->getCode(), sql);
         }
 
         switch type {

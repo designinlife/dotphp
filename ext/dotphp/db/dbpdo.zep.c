@@ -342,7 +342,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 	zephir_fcall_cache_entry *_9 = NULL, *_11 = NULL;
 	int type, ZEPHIR_LAST_CALL_STATUS;
 	zval *params = NULL;
-	zval *sql_param = NULL, *params_param = NULL, *type_param = NULL, *_0, *_1, *d = NULL, *e = NULL, *sth = NULL, *key = NULL, *value = NULL, *_2$$5, **_5$$6, *_6$$8, *_7$$8, *_8$$8 = NULL, *_10$$9 = NULL, *_12$$11, *_13$$14, *_14$$16, *_15$$18;
+	zval *sql_param = NULL, *params_param = NULL, *type_param = NULL, *_0, *_1, *d = NULL, *e = NULL, *sth = NULL, *key = NULL, *value = NULL, *_2$$5, **_5$$6, *_6$$8, *_7$$8, *_8$$8 = NULL, *_10$$9 = NULL, *_12$$10, *_13$$10 = NULL, *_14$$10 = NULL, *_15$$11, *_16$$14, *_17$$16, *_18$$18;
 	zval *sql = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -403,15 +403,23 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 		ZEPHIR_CPY_WRT(e, EG(exception));
 		if (zephir_instance_of_ev(e, php_pdo_get_exception() TSRMLS_CC)) {
 			zend_clear_exception(TSRMLS_C);
-			zephir_throw_exception_debug(e, "dotphp/db/dbpdo.zep", 216 TSRMLS_CC);
+			ZEPHIR_INIT_VAR(_12$$10);
+			object_init_ex(_12$$10, dotphp_dbexception_ce);
+			ZEPHIR_CALL_METHOD(&_13$$10, e, "getmessage", NULL, 0);
+			zephir_check_call_status();
+			ZEPHIR_CALL_METHOD(&_14$$10, e, "getcode", NULL, 0);
+			zephir_check_call_status();
+			ZEPHIR_CALL_METHOD(NULL, _12$$10, "__construct", NULL, 20, _13$$10, _14$$10, sql);
+			zephir_check_call_status();
+			zephir_throw_exception_debug(_12$$10, "dotphp/db/dbpdo.zep", 216 TSRMLS_CC);
 			ZEPHIR_MM_RESTORE();
 			return;
 		}
 	}
 	do {
 		if (type == 1) {
-			_12$$11 = zephir_fetch_nproperty_this(this_ptr, SL("dbo"), PH_NOISY_CC);
-			ZEPHIR_CALL_METHOD(&d, _12$$11, "lastinsertid", NULL, 0);
+			_15$$11 = zephir_fetch_nproperty_this(this_ptr, SL("dbo"), PH_NOISY_CC);
+			ZEPHIR_CALL_METHOD(&d, _15$$11, "lastinsertid", NULL, 0);
 			zephir_check_call_status();
 			break;
 		}
@@ -426,9 +434,9 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 			break;
 		}
 		if (type == 5) {
-			ZEPHIR_INIT_VAR(_13$$14);
-			ZVAL_LONG(_13$$14, 2);
-			ZEPHIR_CALL_METHOD(&d, sth, "fetch", NULL, 0, _13$$14);
+			ZEPHIR_INIT_VAR(_16$$14);
+			ZVAL_LONG(_16$$14, 2);
+			ZEPHIR_CALL_METHOD(&d, sth, "fetch", NULL, 0, _16$$14);
 			zephir_check_call_status();
 			if (ZEPHIR_IS_EMPTY(d)) {
 				ZEPHIR_INIT_NVAR(d);
@@ -437,9 +445,9 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 			break;
 		}
 		if (type == 6) {
-			ZEPHIR_INIT_VAR(_14$$16);
-			ZVAL_LONG(_14$$16, 2);
-			ZEPHIR_CALL_METHOD(&d, sth, "fetchall", NULL, 0, _14$$16);
+			ZEPHIR_INIT_VAR(_17$$16);
+			ZVAL_LONG(_17$$16, 2);
+			ZEPHIR_CALL_METHOD(&d, sth, "fetchall", NULL, 0, _17$$16);
 			zephir_check_call_status();
 			if (ZEPHIR_IS_EMPTY(d)) {
 				ZEPHIR_INIT_NVAR(d);
@@ -448,9 +456,9 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 			break;
 		}
 		if (type == 7) {
-			ZEPHIR_INIT_VAR(_15$$18);
-			ZVAL_LONG(_15$$18, 0);
-			ZEPHIR_CALL_METHOD(&d, sth, "fetchcolumn", NULL, 0, _15$$18);
+			ZEPHIR_INIT_VAR(_18$$18);
+			ZVAL_LONG(_18$$18, 0);
+			ZEPHIR_CALL_METHOD(&d, sth, "fetchcolumn", NULL, 0, _18$$18);
 			zephir_check_call_status();
 			break;
 		}
