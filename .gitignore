@@ -46,3 +46,4 @@ Temporary Items
 *.sh
 ide/*
 .temp/*
+.svn/*
