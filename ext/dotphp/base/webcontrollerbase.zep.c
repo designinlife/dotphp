@@ -51,7 +51,7 @@ ZEPHIR_INIT_CLASS(DotPHP_Base_WebControllerBase) {
 	 *
 	 * @var \DotPHP\Interfaces\IDb
 	 */
-	zend_declare_property_null(dotphp_base_webcontrollerbase_ce, SL("db"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(dotphp_base_webcontrollerbase_ce, SL("dbo"), ZEND_ACC_PROTECTED TSRMLS_CC);
 
 	/**
 	 * ILogger 日志对象实例。
@@ -81,7 +81,7 @@ PHP_METHOD(DotPHP_Base_WebControllerBase, __construct) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL;
-	zval *bootstrap, *_SERVER, *_1 = NULL, *_2, _3, *_4 = NULL, *_5 = NULL, *_6 = NULL, *_7 = NULL, *_8 = NULL;
+	zval *bootstrap, *_SERVER, *_1 = NULL, *_2, _3, *_4 = NULL, *_5 = NULL, *_6 = NULL, *_7 = NULL, *_8 = NULL, *cfgs = NULL, *_9, *_10;
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SERVER, SS("_SERVER") TSRMLS_CC);
@@ -110,13 +110,21 @@ PHP_METHOD(DotPHP_Base_WebControllerBase, __construct) {
 	zephir_update_property_this(this_ptr, SL("tpl"), _5 TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(&_6, bootstrap, "getdb", NULL, 0);
 	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("db"), _6 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("dbo"), _6 TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(&_7, bootstrap, "getlogger", NULL, 0);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("logger"), _7 TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(&_8, bootstrap, "getcache", NULL, 0);
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("cache"), _8 TSRMLS_CC);
+	ZEPHIR_CALL_METHOD(&cfgs, bootstrap, "getappsettings", NULL, 0);
+	zephir_check_call_status();
+	_9 = zephir_fetch_nproperty_this(this_ptr, SL("tpl"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_10);
+	ZVAL_STRING(_10, "cfgs", ZEPHIR_TEMP_PARAM_COPY);
+	ZEPHIR_CALL_METHOD(NULL, _9, "assign", NULL, 0, _10, cfgs);
+	zephir_check_temp_parameter(_10);
+	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -136,7 +144,7 @@ PHP_METHOD(DotPHP_Base_WebControllerBase, __destruct) {
 	ZEPHIR_CALL_PARENT(NULL, dotphp_base_webcontrollerbase_ce, this_ptr, "__destruct", &_0, 11);
 	zephir_check_call_status();
 	zephir_unset_property(this_ptr, "tpl" TSRMLS_CC);
-	zephir_unset_property(this_ptr, "db" TSRMLS_CC);
+	zephir_unset_property(this_ptr, "dbo" TSRMLS_CC);
 	zephir_unset_property(this_ptr, "logger" TSRMLS_CC);
 	zephir_unset_property(this_ptr, "cache" TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();

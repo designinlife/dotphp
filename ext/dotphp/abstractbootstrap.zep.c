@@ -16,10 +16,10 @@
 #include "kernel/fcall.h"
 #include "kernel/operators.h"
 #include "kernel/object.h"
+#include "kernel/array.h"
 #include "kernel/exit.h"
 #include "kernel/exception.h"
 #include "kernel/time.h"
-#include "kernel/array.h"
 
 
 /**
@@ -83,6 +83,20 @@ ZEPHIR_INIT_CLASS(DotPHP_AbstractBootstrap) {
 	 * @var \DotPHP\Bean\CacheParameter
 	 */
 	zend_declare_property_null(dotphp_abstractbootstrap_ce, SL("cache_parameter"), ZEND_ACC_PRIVATE TSRMLS_CC);
+
+	/**
+	 * 缺省数据库名称。
+	 * 
+	 * @var string
+	 */
+	zend_declare_property_null(dotphp_abstractbootstrap_ce, SL("db_name"), ZEND_ACC_PRIVATE TSRMLS_CC);
+
+	/**
+	 * 系统配置数据库名称。
+	 * 
+	 * @var string
+	 */
+	zend_declare_property_null(dotphp_abstractbootstrap_ce, SL("db_base_name"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
 	/**
 	 * 路由解析器对象。
@@ -188,7 +202,7 @@ ZEPHIR_INIT_CLASS(DotPHP_AbstractBootstrap) {
 PHP_METHOD(DotPHP_AbstractBootstrap, dispatch) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *argv_param = NULL, *cfgs_param = NULL, *_0, _1, *_2 = NULL, *_3 = NULL, *_4;
+	zval *argv_param = NULL, *cfgs_param = NULL, *_0, _1, *_2 = NULL, *_3, *_4, *_8, *_9, *_13 = NULL, *_14, *_5$$4, *_6$$4, *_7$$4, *_10$$5, *_11$$5, *_12$$5;
 	zval *argv = NULL, *cfgs = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -228,21 +242,37 @@ PHP_METHOD(DotPHP_AbstractBootstrap, dispatch) {
 	}
 	zephir_update_property_this(this_ptr, SL("argv"), argv TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("cfgs"), cfgs TSRMLS_CC);
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("cfgs"), PH_NOISY_CC);
+	zephir_array_fetch_string(&_4, _3, SL("db"), PH_READONLY, "dotphp/abstractbootstrap.zep", 183 TSRMLS_CC);
+	if (zephir_array_isset_string(_4, SS("db_name"))) {
+		_5$$4 = zephir_fetch_nproperty_this(this_ptr, SL("cfgs"), PH_NOISY_CC);
+		zephir_array_fetch_string(&_6$$4, _5$$4, SL("db"), PH_NOISY | PH_READONLY, "dotphp/abstractbootstrap.zep", 184 TSRMLS_CC);
+		zephir_array_fetch_string(&_7$$4, _6$$4, SL("db_name"), PH_NOISY | PH_READONLY, "dotphp/abstractbootstrap.zep", 184 TSRMLS_CC);
+		zephir_update_property_this(this_ptr, SL("db_name"), _7$$4 TSRMLS_CC);
+	}
+	_8 = zephir_fetch_nproperty_this(this_ptr, SL("cfgs"), PH_NOISY_CC);
+	zephir_array_fetch_string(&_9, _8, SL("db"), PH_READONLY, "dotphp/abstractbootstrap.zep", 186 TSRMLS_CC);
+	if (zephir_array_isset_string(_9, SS("db_base"))) {
+		_10$$5 = zephir_fetch_nproperty_this(this_ptr, SL("cfgs"), PH_NOISY_CC);
+		zephir_array_fetch_string(&_11$$5, _10$$5, SL("db"), PH_NOISY | PH_READONLY, "dotphp/abstractbootstrap.zep", 187 TSRMLS_CC);
+		zephir_array_fetch_string(&_12$$5, _11$$5, SL("db_base"), PH_NOISY | PH_READONLY, "dotphp/abstractbootstrap.zep", 187 TSRMLS_CC);
+		zephir_update_property_this(this_ptr, SL("db_base_name"), _12$$5 TSRMLS_CC);
+	}
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "setup", NULL, 2);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "initialize", NULL, 0);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "initializecomplete", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_3, this_ptr, "route", NULL, 0);
+	ZEPHIR_CALL_METHOD(&_13, this_ptr, "route", NULL, 0);
 	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("route_message"), _3 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("route_message"), _13 TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "validate", NULL, 0);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "before", NULL, 0);
 	zephir_check_call_status();
-	_4 = zephir_fetch_nproperty_this(this_ptr, SL("route_message"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "execute", NULL, 0, _4);
+	_14 = zephir_fetch_nproperty_this(this_ptr, SL("route_message"), PH_NOISY_CC);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "execute", NULL, 0, _14);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, this_ptr, "after", NULL, 0);
 	zephir_check_call_status();
@@ -496,7 +526,7 @@ PHP_METHOD(DotPHP_AbstractBootstrap, defErrorHandler) {
 	ZVAL_LONG(_3, errline);
 	ZEPHIR_CALL_METHOD(NULL, _0, "__construct", NULL, 4, errstr, _1, _2, errfile, _3);
 	zephir_check_call_status();
-	zephir_throw_exception_debug(_0, "dotphp/abstractbootstrap.zep", 293 TSRMLS_CC);
+	zephir_throw_exception_debug(_0, "dotphp/abstractbootstrap.zep", 314 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 	return;
 
@@ -564,6 +594,32 @@ PHP_METHOD(DotPHP_AbstractBootstrap, isCliMode) {
 	
 
 	RETURN_MEMBER(this_ptr, "is_cli_mode");
+
+}
+
+/**
+ * 获取缺省数据库名称。
+ * 
+ * @return string
+ */
+PHP_METHOD(DotPHP_AbstractBootstrap, getDbName) {
+
+	
+
+	RETURN_MEMBER(this_ptr, "db_name");
+
+}
+
+/**
+ * 获取系统配置数据库名称。
+ * 
+ * @return string
+ */
+PHP_METHOD(DotPHP_AbstractBootstrap, getDbBaseName) {
+
+	
+
+	RETURN_MEMBER(this_ptr, "db_base_name");
 
 }
 

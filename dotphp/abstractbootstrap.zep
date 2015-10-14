@@ -60,6 +60,20 @@ abstract class AbstractBootstrap {
     private cache_parameter = null;
 
     /**
+     * 缺省数据库名称。
+     * 
+     * @var string
+     */
+    private db_name = null;
+
+    /**
+     * 系统配置数据库名称。
+     * 
+     * @var string
+     */
+    private db_base_name = null;
+
+    /**
      * 路由解析器对象。
      * 
      * @var \DotPHP\Interfaces\IRouteParser
@@ -165,6 +179,13 @@ abstract class AbstractBootstrap {
 
         let this->argv = argv;
         let this->cfgs = cfgs;
+
+        if isset this->cfgs["db"]["db_name"] {
+            let this->db_name = this->cfgs["db"]["db_name"];
+        }
+        if isset this->cfgs["db"]["db_base"] {
+            let this->db_base_name = this->cfgs["db"]["db_base"];
+        }
 
         this->setup();                           // 安装系统环境设置
         this->initialize();                      // 初始化事件
@@ -336,6 +357,24 @@ abstract class AbstractBootstrap {
      */
     public function isCliMode() -> boolean {
         return this->is_cli_mode;
+    }
+
+    /**
+     * 获取缺省数据库名称。
+     * 
+     * @return string
+     */
+    public function getDbName() -> string {
+        return this->db_name;
+    }
+
+    /**
+     * 获取系统配置数据库名称。
+     * 
+     * @return string
+     */
+    public function getDbBaseName() -> string {
+        return this->db_base_name;
     }
 
     /**

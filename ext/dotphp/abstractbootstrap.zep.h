@@ -20,6 +20,8 @@ PHP_METHOD(DotPHP_AbstractBootstrap, getLogger);
 PHP_METHOD(DotPHP_AbstractBootstrap, getCache);
 PHP_METHOD(DotPHP_AbstractBootstrap, getRouteMessage);
 PHP_METHOD(DotPHP_AbstractBootstrap, isCliMode);
+PHP_METHOD(DotPHP_AbstractBootstrap, getDbName);
+PHP_METHOD(DotPHP_AbstractBootstrap, getDbBaseName);
 PHP_METHOD(DotPHP_AbstractBootstrap, getAppSettings);
 PHP_METHOD(DotPHP_AbstractBootstrap, getTimezone);
 PHP_METHOD(DotPHP_AbstractBootstrap, setTimezone);
@@ -132,6 +134,8 @@ ZEPHIR_INIT_FUNCS(dotphp_abstractbootstrap_method_entry) {
 	PHP_ME(DotPHP_AbstractBootstrap, getCache, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getRouteMessage, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, isCliMode, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, getDbName, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(DotPHP_AbstractBootstrap, getDbBaseName, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getAppSettings, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, getTimezone, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(DotPHP_AbstractBootstrap, setTimezone, arginfo_dotphp_abstractbootstrap_settimezone, ZEND_ACC_PUBLIC)

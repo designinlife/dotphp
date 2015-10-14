@@ -29,7 +29,7 @@ class WebControllerBase extends \DotPHP\Base\DotBase implements \DotPHP\Interfac
      *
      * @var \DotPHP\Interfaces\IDb
      */
-    protected db = null;
+    protected dbo = null;
 
     /**
      * ILogger 日志对象实例。
@@ -55,9 +55,14 @@ class WebControllerBase extends \DotPHP\Base\DotBase implements \DotPHP\Interfac
 
         let this->_isPostback = 0 === strcmp("POST", _SERVER["REQUEST_METHOD"]) ? true : false;
         let this->tpl    = bootstrap->getTemplate();
-        let this->db     = bootstrap->getDb();
+        let this->dbo    = bootstrap->getDb();
         let this->logger = bootstrap->getLogger();
         let this->cache  = bootstrap->getCache();
+
+        var cfgs;
+        let cfgs = bootstrap->getAppSettings();
+
+        this->tpl->assign("cfgs", cfgs);
     }
 
     /**
@@ -69,7 +74,7 @@ class WebControllerBase extends \DotPHP\Base\DotBase implements \DotPHP\Interfac
         parent::__destruct();
 
         unset this->tpl;
-        unset this->db;
+        unset this->dbo;
         unset this->logger;
         unset this->cache;
     }
