@@ -371,10 +371,8 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
 
             try {
                 let this->dbo = new \PDO(dsn, this->dbParameter->getUser(), this->dbParameter->getPass(), opts);
-            } catch \PDOException, e {
-                throw new \DotPHP\DbException("数据库连接失败。(" . this->dbParameter->getHost() . ")");
             } catch \Exception, e {
-                throw e;
+                throw new \DotPHP\DbException("数据库连接失败。(" . this->dbParameter->getHost() . ")");
             }
 
             let this->is_connected = true;

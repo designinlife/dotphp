@@ -741,7 +741,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 
 		if (EG(exception)) {
 			ZEPHIR_CPY_WRT(e$$4, EG(exception));
-			if (zephir_instance_of_ev(e$$4, php_pdo_get_exception() TSRMLS_CC)) {
+			if (zephir_instance_of_ev(e$$4, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
 				zend_clear_exception(TSRMLS_C);
 				ZEPHIR_INIT_VAR(_28$$8);
 				object_init_ex(_28$$8, dotphp_dbexception_ce);
@@ -753,13 +753,6 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 				ZEPHIR_CALL_METHOD(NULL, _28$$8, "__construct", NULL, 20, _31$$8);
 				zephir_check_call_status();
 				zephir_throw_exception_debug(_28$$8, "dotphp/db/dbpdo.zep", 375 TSRMLS_CC);
-				ZEPHIR_MM_RESTORE();
-				return;
-			}
-			ZEPHIR_CPY_WRT(e$$4, EG(exception));
-			if (zephir_instance_of_ev(e$$4, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
-				zend_clear_exception(TSRMLS_C);
-				zephir_throw_exception_debug(e$$4, "dotphp/db/dbpdo.zep", 377 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();
 				return;
 			}
