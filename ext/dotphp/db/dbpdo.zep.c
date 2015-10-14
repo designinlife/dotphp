@@ -342,7 +342,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 	zephir_fcall_cache_entry *_9 = NULL, *_11 = NULL;
 	int type, ZEPHIR_LAST_CALL_STATUS;
 	zval *params = NULL;
-	zval *sql_param = NULL, *params_param = NULL, *type_param = NULL, *_0, *_1, *d = NULL, *e = NULL, *sth = NULL, *key = NULL, *value = NULL, *_2$$5, **_5$$6, *_6$$8, *_7$$8, *_8$$8 = NULL, *_10$$9 = NULL, *_12$$11, *_13$$14, *_14$$15, *_15$$16;
+	zval *sql_param = NULL, *params_param = NULL, *type_param = NULL, *_0, *_1, *d = NULL, *e = NULL, *sth = NULL, *key = NULL, *value = NULL, *_2$$5, **_5$$6, *_6$$8, *_7$$8, *_8$$8 = NULL, *_10$$9 = NULL, *_12$$11, *_13$$14, *_14$$16, *_15$$18;
 	zval *sql = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -430,23 +430,31 @@ PHP_METHOD(DotPHP_DB_DbPdo, execute) {
 			ZVAL_LONG(_13$$14, 2);
 			ZEPHIR_CALL_METHOD(&d, sth, "fetch", NULL, 0, _13$$14);
 			zephir_check_call_status();
+			if (ZEPHIR_IS_EMPTY(d)) {
+				ZEPHIR_INIT_NVAR(d);
+				ZVAL_BOOL(d, 0);
+			}
 			break;
 		}
 		if (type == 6) {
-			ZEPHIR_INIT_VAR(_14$$15);
-			ZVAL_LONG(_14$$15, 2);
-			ZEPHIR_CALL_METHOD(&d, sth, "fetchall", NULL, 0, _14$$15);
+			ZEPHIR_INIT_VAR(_14$$16);
+			ZVAL_LONG(_14$$16, 2);
+			ZEPHIR_CALL_METHOD(&d, sth, "fetchall", NULL, 0, _14$$16);
 			zephir_check_call_status();
+			if (ZEPHIR_IS_EMPTY(d)) {
+				ZEPHIR_INIT_NVAR(d);
+				ZVAL_BOOL(d, 0);
+			}
 			break;
 		}
 		if (type == 7) {
-			ZEPHIR_INIT_VAR(_15$$16);
-			ZVAL_LONG(_15$$16, 0);
-			ZEPHIR_CALL_METHOD(&d, sth, "fetchcolumn", NULL, 0, _15$$16);
+			ZEPHIR_INIT_VAR(_15$$18);
+			ZVAL_LONG(_15$$18, 0);
+			ZEPHIR_CALL_METHOD(&d, sth, "fetchcolumn", NULL, 0, _15$$18);
 			zephir_check_call_status();
 			break;
 		}
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_argumentexception_ce, "当前 SQL 类型不被支持。", "dotphp/db/dbpdo.zep", 240);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_argumentexception_ce, "当前 SQL 类型不被支持。", "dotphp/db/dbpdo.zep", 248);
 		return;
 	} while(0);
 
@@ -627,7 +635,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, changedb) {
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("dbo"), PH_NOISY_CC);
 	if (!(zephir_is_true(_1))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_dbexception_ce, "检测到无效的 PDO 实例对象。", "dotphp/db/dbpdo.zep", 326);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_dbexception_ce, "检测到无效的 PDO 实例对象。", "dotphp/db/dbpdo.zep", 334);
 		return;
 	}
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("dbo"), PH_NOISY_CC);
@@ -657,7 +665,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("dbParameter"), PH_NOISY_CC);
 	if (Z_TYPE_P(_0) == IS_NULL) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_argumentexception_ce, "尚未设置 DB 连接参数。", "dotphp/db/dbpdo.zep", 341);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(dotphp_argumentexception_ce, "尚未设置 DB 连接参数。", "dotphp/db/dbpdo.zep", 349);
 		return;
 	}
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("is_connected"), PH_NOISY_CC);
@@ -744,7 +752,7 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 				ZEPHIR_CONCAT_SVS(_31$$8, "数据库连接失败。(", _30$$8, ")");
 				ZEPHIR_CALL_METHOD(NULL, _28$$8, "__construct", NULL, 20, _31$$8);
 				zephir_check_call_status();
-				zephir_throw_exception_debug(_28$$8, "dotphp/db/dbpdo.zep", 367 TSRMLS_CC);
+				zephir_throw_exception_debug(_28$$8, "dotphp/db/dbpdo.zep", 375 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();
 				return;
 			}

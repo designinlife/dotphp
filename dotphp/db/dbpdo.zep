@@ -229,9 +229,17 @@ class DbPdo extends \DotPHP\Base\DotBase implements \DotPHP\Interfaces\IDb {
                 break;
             case \DotPHP\Dot::SQL_TYPE_FETCH:
                 let d = sth->{"fetch"}(2);
+
+                if empty d {
+                    let d = false;
+                }
                 break;
             case \DotPHP\Dot::SQL_TYPE_FETCH_ALL:
                 let d = sth->fetchAll(2);
+
+                if empty d {
+                    let d = false;
+                }
                 break;
             case \DotPHP\Dot::SQL_TYPE_SCALAR:
                 let d = sth->fetchColumn(0);
