@@ -756,6 +756,13 @@ PHP_METHOD(DotPHP_DB_DbPdo, connect) {
 				ZEPHIR_MM_RESTORE();
 				return;
 			}
+			ZEPHIR_CPY_WRT(e$$4, EG(exception));
+			if (zephir_instance_of_ev(e$$4, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
+				zend_clear_exception(TSRMLS_C);
+				zephir_throw_exception_debug(e$$4, "dotphp/db/dbpdo.zep", 377 TSRMLS_CC);
+				ZEPHIR_MM_RESTORE();
+				return;
+			}
 		}
 		if (1) {
 			zephir_update_property_this(this_ptr, SL("is_connected"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
